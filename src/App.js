@@ -6,6 +6,7 @@ import jwt from "jsonwebtoken";
 import './App.css';
 import Routes from "./Routes/Routes";
 import UserContext from "./auth/UserContext";
+import NavBar from "./Routes/NavBar";
 
 export const TOKEN_STORAGE_ID = "user-token";
 
@@ -14,6 +15,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [infoLoaded, setInfoLoaded] = useState(false);
   const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID);
+  console.log(TOKEN_STORAGE_ID);
 
   useEffect(function loadUser() {
     async function getCurrentUser(){
@@ -49,9 +51,9 @@ function App() {
     setToken(null);
   }
 
-  async function singup(singupData){
+  async function signup(signupData){
     try {
-      let token = await Backend.singup(singupData);
+      let token = await Backend.signup(signupData);
       setToken(token);
       return { success: true };
     } catch (err) {
@@ -65,7 +67,8 @@ function App() {
     <BrowserRouter>
     <UserContext.Provider value={{ currentUser, setCurrentUser }}>
     <div className="app">
-    <Routes login={login} singup={singup} />
+    <NavBar logout={logout} />
+    <Routes login={login} signup={signup} />
     </div>
     </UserContext.Provider>
     </BrowserRouter>

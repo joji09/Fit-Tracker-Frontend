@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-function SingupForm({ singup }){
+function SingupForm({ signup }){
     const history = useHistory();
     const [formData, setFormData] = useState({
         username: "",
@@ -15,7 +15,7 @@ function SingupForm({ singup }){
 
     async function handleSubmit(evt){
         evt.preventDefault();
-        let result = await singup(formData);
+        let result = await signup(formData);
         if(result.sucess){
             console.log(result);
             console.log(formData);
@@ -34,7 +34,7 @@ function SingupForm({ singup }){
     return (
         <div className="SingupForm">
             <div className="container">
-            <h2>Sing Up</h2>
+            <h2>Sign Up</h2>
 
             <form onSubmit={handleSubmit}>
             

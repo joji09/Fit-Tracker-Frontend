@@ -15,7 +15,7 @@ function Homepage(){
             : (
                 <p>
                     <Link to="/login">Login</Link>
-                    <Link to="/singup">Singup</Link>
+                    <Link to="/signup">Signup</Link>
                 </p>
             )}
         </div>

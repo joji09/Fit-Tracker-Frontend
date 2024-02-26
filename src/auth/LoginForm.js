@@ -38,7 +38,7 @@ function LoginForm({ login }){
 
                 <div>
                     <label>Password</label>
-                    <input name="password" type="password" value={formData.username} onChange={handleChange} required />
+                    <input name="password" type="password" value={formData.password} onChange={handleChange} required />
                 </div>
 
                 <button onSubmit={handleSubmit}>Submit</button>
