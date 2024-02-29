@@ -7,33 +7,39 @@ function NavBar({ logout }){
 
     function loggedInNav(){
         return(
-            <ul>
-                <li>
-                    <Link to="/" onClick={logout}>Logout {currentUser.username }</Link>
+            <ul className="navbar-nav ml-auto">
+
+                <li className="nav-item mr-4">
+                    <NavLink className="nav-link" to="/">Profile</NavLink>
                 </li>
+
+                <li className="nav-item mr-4">
+                    <Link className="nav-link" to="/" onClick={logout}>Logout {currentUser.username }</Link>
+                </li>
+                
             </ul>
         );
     }
 
-    // function loggedOutNav(){
-    //     return(
-    //         <ul>
-    //             <li>
-    //                 <NavLink to="/login">Login</NavLink>
-    //             </li>
-    //             <li>
-    //             <NavLink to="/singup">Singup</NavLink>
-    //             </li>
-    //         </ul>
-    //     );
-    // }
+    function loggedOutNav(){
+        return(
+            <ul className="navbar-nav ml-auto">
+                <li className="nav-item">
+                    <NavLink className="nav-link" to="/login">Login</NavLink>
+                </li>
+                <li>
+                <NavLink className="nav-link" to="/singup">Singup</NavLink>
+                </li>
+            </ul>
+        );
+    }
 
     return(
         <nav>
             <Link to="/">
                 Fit-Tracker
             </Link>
-            {currentUser ? loggedInNav() : null }
+            {currentUser ? loggedInNav() : loggedOutNav() }
         </nav>
     );
 }
