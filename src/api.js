@@ -40,6 +40,22 @@ class Backend {
         let res = await this.request(`auth/register`, data, "post");
         return res.token;
     }
+
+    // Playlist routes
+
+    static async addExerciseToPlaylist(data) {
+        let res = await this.request(`/playlist/add`, data, "post");
+        return res.mappingId;
+    }
+
+    static async getUserPlaylist(userId) {
+        let res = await this.request(`/playlist/playlist`, { userId });
+        return res.userPlaylist;
+    }
+
+    static async removeExerciseFromPlaylist(mappingId){
+        await this.request(`/playlist/remove/${mappingId}`, {}, "delete");
+    }
 }
 
 Backend.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +

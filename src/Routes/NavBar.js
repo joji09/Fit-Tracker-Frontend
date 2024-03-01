@@ -10,6 +10,10 @@ function NavBar({ logout }){
             <ul className="navbar-nav ml-auto">
 
                 <li className="nav-item mr-4">
+                    <NavLink className="nav-link" to="/dashboard">Dashboard</NavLink>
+                </li>
+
+                <li className="nav-item mr-4">
                     <NavLink className="nav-link" to="/">Profile</NavLink>
                 </li>
 

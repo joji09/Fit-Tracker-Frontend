@@ -16,7 +16,7 @@ function Dashboard(){
                     <p>View your progress over time</p>
                 </Link>
 
-                <Link to="/create-workout" className="card">
+                <Link to="/create-playlist" className="card">
                     <h2>Create Workout Playlist</h2>
                     <p>Plan your workout splits!</p>
                 </Link>

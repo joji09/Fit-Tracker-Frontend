@@ -1,6 +1,8 @@
 import React from "react";
 
 function ExercisesSelection({ exercises, onAddExercises }) {
+    // Displays available exercises and allows users to add exercises to their playlist.
+
     return (
         <div>
             <h2>Available Exercises</h2>

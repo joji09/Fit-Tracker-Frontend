@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import Backend from "../api";
 
 function PlaylistForm({ onSubmit }){
+    // Allows users to enter a playlist name and select days for workouts
+
     const [playlistName, setPlaylistName] = useState("");
     const [selectedDays, setSelectedDays] = useState([]);
 
@@ -15,6 +18,7 @@ function PlaylistForm({ onSubmit }){
     const handleSubmit = (e) => {
         e.preventDefault();
         onSubmit({ playlistName, selectedDays });
+        console.log("submit button clicked");
     };
 
     return (
@@ -26,11 +30,12 @@ function PlaylistForm({ onSubmit }){
 
             <div>
                 <p>Select Days:</p>
-                {[ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]}
+                {[ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].map((day) => (
                 <label key={day}>
                     <input type="checkbox" checked={selectedDays.includes(day)} onChange={() => handleToggle(day)} />
                     {day}
                 </label>
+                ))}
             </div>
             <button type="submit">Create Playlist</button>
         </form>
