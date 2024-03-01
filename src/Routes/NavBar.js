@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import {Link, NavLink } from "react-router-dom";
 import UserContext from "../auth/UserContext";
+import "./NavBar.css";
 
 function NavBar({ logout }){
     const { currentUser } = useContext(UserContext);
@@ -39,8 +40,8 @@ function NavBar({ logout }){
     }
 
     return(
-        <nav>
-            <Link to="/">
+        <nav className="navbar">
+            <Link to="/" className="nav-link">
                 Fit-Tracker
             </Link>
             {currentUser ? loggedInNav() : loggedOutNav() }

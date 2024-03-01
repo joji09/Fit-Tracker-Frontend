@@ -14,7 +14,7 @@ function LoginForm({ login }){
         evt.preventDefault();
         let result = await login(formData);
         if(result.success){
-            history.push("/homepage");
+            history.push("/dashboard");
         } else {
             setFormError(result.err);
         }

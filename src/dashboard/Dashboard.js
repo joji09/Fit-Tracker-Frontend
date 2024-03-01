@@ -7,22 +7,29 @@ function Dashboard(){
     const [dayWorkouts, setDayWorkouts] = useState([]);
     
     return(
-        <div>
-            <h1>Welcome back {currentUser.firstName || currentUser.username}!</h1>
+        <div className="container text-center">
+            <h1 className="mt-5">Welcome back {currentUser.firstName || currentUser.username}!</h1>
 
-            <div className="card-container">
-                <Link to="/track-progress" className="card">
+            <div className="row justify-content-center mt-5">
+                <div className="col-md-4 mb-4"></div>
+                <Link to="/track-progress" className="card text-cent">
+                    <div className="card-body">
                     <h2>Track Progress</h2>
-                    <p>View your progress over time</p>
-                </Link>
-
-                <Link to="/create-playlist" className="card">
-                    <h2>Create Workout Playlist</h2>
-                    <p>Plan your workout splits!</p>
+                    <p className="card-text">View your progress over time</p>
+                    </div>
                 </Link>
             </div>
 
-            <h2>Today's Workouts</h2>
+                <div className="col-md-4 mb-4">
+                <Link to="/create-playlist" className="card text-center">
+                    <div className="card-body">
+                    <h2>Create Workout Playlist</h2>
+                    <p className="card-text">Plan your workout splits!</p>
+                    </div>
+                </Link>
+            </div>
+
+            <h2 className="mt-5">Today's Workouts</h2>
             {dayWorkouts.length > 0 ? (
                 <ul>
                     {dayWorkouts.map(workout => (

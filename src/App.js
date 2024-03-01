@@ -7,6 +7,7 @@ import './App.css';
 import Routes from "./Routes/Routes";
 import UserContext from "./auth/UserContext";
 import NavBar from "./Routes/NavBar";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const TOKEN_STORAGE_ID = "user-token";
 

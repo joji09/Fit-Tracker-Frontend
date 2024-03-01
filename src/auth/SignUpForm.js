@@ -17,9 +17,7 @@ function SingupForm({ signup }){
         evt.preventDefault();
         let result = await signup(formData);
         if(result.sucess){
-            console.log(result);
-            console.log(formData);
-            history.push("/homepage");
+            history.push("/dashboard");
         } else {
             console.log(formData);
             setFormError(result.err);

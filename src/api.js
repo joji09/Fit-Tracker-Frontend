@@ -45,30 +45,30 @@ class Backend {
 
     static async addExerciseToPlaylist(data) {
         // adds exercises to playlist
-        let res = await this.request(`/playlist/add`, data, "post");
+        let res = await this.request(`playlist/playlist/add`, data, "post");
         return res.mappingId;
     }
 
     static async getUserPlaylist(userId) {
         // fetches the user's playlist
-        let res = await this.request(`/playlist/playlist`, { userId });
+        let res = await this.request(`playlist/playlist`, { userId });
         return res.userPlaylist;
     }
 
     static async removeExerciseFromPlaylist(mappingId){
         // removes an exercise from a playlist
-        await this.request(`/playlist/remove/${mappingId}`, {}, "delete");
+        await this.request(`playlist/playlist/remove/${mappingId}`, {}, "delete");
     }
 
     static async createPlaylist(data){
         // creates a new playlist
-        await this.request('/playlist/create', data, "post");
+        await this.request('playlist/playlist/create', data, "post");
         console.log("playlist created");
     }
 
     static async removePlaylist(userId, playlistName) {
         // remove playlist
-        await this.request(`/playlist/remove/${userId}/${playlistName}`, {}, "delete");
+        await this.request(`playlist/playlist/remove/${userId}/${playlistName}`, {}, "delete");
         console.log("playlist deleted")
     }
 }
