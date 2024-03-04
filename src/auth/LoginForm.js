@@ -17,6 +17,7 @@ function LoginForm({ login }){
             history.push("/dashboard");
         } else {
             setFormError(result.err);
+            // add alert
         }
     }
 

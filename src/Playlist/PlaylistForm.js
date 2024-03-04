@@ -29,9 +29,13 @@ function PlaylistForm({ onSubmit }){
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log({ currentUser });
        try {
-        const userId = fetchUserId();
+        // fetch userID
+        console.log({ currentUser });
+        console.log(currentUser.username);
+        const userId = await Backend.getUserId(currentUser.username);
+        console.log(userId);
+        
         if(!userId){
             console.error("User ID not found");
             return;
@@ -43,10 +47,14 @@ function PlaylistForm({ onSubmit }){
             days: selectedDays
         };
         console.log(playlistData);
+
         await Backend.createPlaylist(playlistData);
+
+        // Reset Fields
         setPlaylistName("");
         setSelectedDays([]);
-        history.push("/playlists");
+        history.push("/playlist");
+
        } catch (error) {
         console.error("Error creating playlist", error);
        }

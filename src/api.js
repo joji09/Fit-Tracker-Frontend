@@ -51,6 +51,21 @@ class Backend {
         return res.token;
     }
 
+    // User routes
+
+    static async getUserId(username) {
+        console.log(`requesting username: ${username}`);
+        try {
+            console.log(username);
+            const res = await this.request(`users/userId/${username}`);
+            console.log(res.UserId);
+            return res.userId;
+        } catch (error) {
+            console.error("Error fetching userId", error);
+            throw error;
+        }
+    }
+
     // Playlist routes
 
     static async addExerciseToPlaylist(data) {

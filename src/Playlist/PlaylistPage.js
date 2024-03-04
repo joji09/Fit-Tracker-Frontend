@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PlaylistForm from "./PlaylistForm";
 import ExercisesSelection from "./ExercisesSelection";
 import DaySelection from "./DaySelection";
-import PlaylistList from "./PlaylistLis";
+import PlaylistList from "./PlaylistList";
 import Backend from "../api";
 
 function PlaylistPage() {

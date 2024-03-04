@@ -19,8 +19,8 @@ function SingupForm({ signup }){
         if(result.sucess){
             history.push("/dashboard");
         } else {
-            console.log(formData);
             setFormError(result.err);
+            // add alert
         }
     }
 
