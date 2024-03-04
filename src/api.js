@@ -29,6 +29,16 @@ class Backend {
         return res.user;
     }
 
+    static async updateUserProfile(data){
+        try {
+            const res = await this.request(`users/update`, data, 'patch');
+            return res.user;
+        } catch (error) {
+            console.error("Error updating profile", error);
+            throw Error;
+        }
+    }
+
     // auth routes
 
     static async login(data){
@@ -63,6 +73,7 @@ class Backend {
     static async createPlaylist(data){
         // creates a new playlist
         await this.request('playlist/playlist/create', data, "post");
+        console.log(data);
         console.log("playlist created");
     }
 

@@ -21,10 +21,10 @@ function Dashboard(){
             </div>
 
                 <div className="col-md-4 mb-4">
-                <Link to="/create-playlist" className="card text-center">
+                <Link to="/playlists" className="card text-center">
                     <div className="card-body">
-                    <h2>Create Workout Playlist</h2>
-                    <p className="card-text">Plan your workout splits!</p>
+                    <h2>Manage Playlist</h2>
+                    <p className="card-text">Manage your playlists!</p>
                     </div>
                 </Link>
             </div>

@@ -16,12 +16,13 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [infoLoaded, setInfoLoaded] = useState(false);
   const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID);
+  const [userId, setUserId] = useState();
   console.log(TOKEN_STORAGE_ID);
 
   useEffect(function loadUser() {
     async function getCurrentUser(){
-      if(token){
-        try{
+      if (token) {
+        try {
           let { username } = jwt.decode(token);
           Backend.token = token;
           let currentUser = await Backend.getCurrentUser(username);
@@ -32,7 +33,6 @@ function App() {
       }
       setInfoLoaded(false);
     }
-    setInfoLoaded(false);
     getCurrentUser();
   }, [token]);
 

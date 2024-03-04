@@ -15,7 +15,7 @@ function NavBar({ logout }){
                 </li>
 
                 <li className="nav-item mr-4">
-                    <NavLink className="nav-link" to="/">Profile</NavLink>
+                    <NavLink className="nav-link" to="/profile">Profile</NavLink>
                 </li>
 
                 <li className="nav-item mr-4">
@@ -33,7 +33,7 @@ function NavBar({ logout }){
                     <NavLink className="nav-link" to="/login">Login</NavLink>
                 </li>
                 <li>
-                <NavLink className="nav-link" to="/singup">Singup</NavLink>
+                <NavLink className="nav-link" to="/signup">Singup</NavLink>
                 </li>
             </ul>
         );

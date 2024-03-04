@@ -1,11 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Backend from "../api";
+import UserContext from "../auth/UserContext";
 
 function PlaylistForm({ onSubmit }){
     // Allows users to enter a playlist name and select days for workouts
 
     const [playlistName, setPlaylistName] = useState("");
     const [selectedDays, setSelectedDays] = useState([]);
+    const { currentUser } = useContext(UserContext);
+
+    const history = useHistory();
+
+    const fetchUserId = () => {
+        if (currentUser && currentUser.userId) {
+            return currentUser.userId;
+        }
+        return null;
+    }
 
     const handleToggle = (day) => {
         if (selectedDays.includes(day)) {
@@ -15,10 +27,30 @@ function PlaylistForm({ onSubmit }){
         }
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        onSubmit({ playlistName, selectedDays });
-        console.log("submit button clicked");
+        console.log({ currentUser });
+       try {
+        const userId = fetchUserId();
+        if(!userId){
+            console.error("User ID not found");
+            return;
+        }
+
+        const playlistData = {
+            userId: userId,
+            playlistName,
+            days: selectedDays
+        };
+        console.log(playlistData);
+        await Backend.createPlaylist(playlistData);
+        setPlaylistName("");
+        setSelectedDays([]);
+        history.push("/playlists");
+       } catch (error) {
+        console.error("Error creating playlist", error);
+       }
+
     };
 
     return (
@@ -37,7 +69,7 @@ function PlaylistForm({ onSubmit }){
                 </label>
                 ))}
             </div>
-            <button type="submit">Create Playlist</button>
+            <button type="submit" onSubmit={handleSubmit}>Create Playlist</button>
         </form>
     );
 }
