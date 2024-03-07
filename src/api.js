@@ -54,12 +54,13 @@ class Backend {
     // User routes
 
     static async getUserId(username) {
-        console.log(`requesting username: ${username}`);
+        // console.log(`requesting username: ${username}`);
         try {
             console.log(username);
             const res = await this.request(`users/userId/${username}`);
-            console.log(res.UserId);
-            return res.userId;
+            // console.log(res);
+            // console.log(res.user);
+            return res.user;
         } catch (error) {
             console.error("Error fetching userId", error);
             throw error;
