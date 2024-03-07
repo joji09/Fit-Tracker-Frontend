@@ -12,10 +12,15 @@ function PlaylistList({ playlists }){
 
     useEffect(() => {
         const fetchUserPlaylists = async () => {
+
             try {
                 if(currentUser){
-                    const userPlaylists = await Backend.getUserPlaylist(currentUser.userId);
+                    console.log(currentUser.username);
+                    const userId = await Backend.getUserId(currentUser.username);
+                    const userPlaylists = await Backend.getUserPlaylist(userId);
+                    console.log(userPlaylists);
                     setPlaylists(userPlaylists);
+                    setLoading(false); 
                 }
             } catch (error) {
                 console.error("Error fetching user's playlist", error);
@@ -32,13 +37,10 @@ function PlaylistList({ playlists }){
                 {loading ? (
                     <p>Loading...</p>
                 ) : playlist.length === 0 ? (
-                    <p>No playlist created</p>
+                    <p>No playlists created</p>
                 ) : (
-                    playlist.map((playlists) => (
-                        <div key={playlists.id}>
-                            <h2>{playlists.name}</h2>
-                            <p>Assigned days: {playlists.days.join(", ")}</p>
-                        </div>
+                    playlist.map((playlist) => (
+                        <PlaylistCard key={playlist.playlistid} playlist={playlist} />
                     ))
                 )}
             </div>
