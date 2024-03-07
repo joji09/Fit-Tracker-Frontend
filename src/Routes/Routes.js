@@ -9,6 +9,7 @@ import Dashboard from "../dashboard/Dashboard";
 import PlaylistForm from "../Playlist/PlaylistForm";
 import Profile from "../Profile/Profile";
 import ProfileForm from "../Profile/ProfileForm";
+import WorkoutSearch from "../Workout/WorkoutSearch";
 
 function Routes({ login, signup }){
 
@@ -18,6 +19,7 @@ function Routes({ login, signup }){
                 <Route exact path="/"><Homepage /></Route>
                 <Route exact path="/login"><LoginForm login={login} /></Route>
                 <Route exact path="/signup"><SingupForm signup={signup} /></Route>
+                <Route exact path="/workoutrequests"><WorkoutSearch /></Route>
                 <PrivateRoute exact path="/dashboard"><Dashboard /></PrivateRoute>
                 <PrivateRoute exact path="/profile"><Profile /></PrivateRoute>
                 <PrivateRoute exact path="/profile/edit"><ProfileForm /></PrivateRoute>

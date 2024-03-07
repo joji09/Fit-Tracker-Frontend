@@ -98,6 +98,18 @@ class Backend {
         await this.request(`playlist/playlist/remove/${userId}/${playlistName}`, {}, "delete");
         console.log("playlist deleted")
     }
+
+    // Workout API Routes
+
+    static async getExerciseByBodyPart(bodyPart) {
+        try {
+            const res = await this.request(`workout/exercises/${bodyPart}`);
+            return res.exercises;
+        } catch (error) {
+            console.error("Error fetching exercises by body part", error);
+            throw error;
+        }
+    }
 }
 
 Backend.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
