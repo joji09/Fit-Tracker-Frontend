@@ -101,6 +101,7 @@ class Backend {
 
     // Workout API Routes
 
+
     static async getExerciseByBodyPart(bodyPart) {
         try {
             const res = await this.request(`workout/exercises/${bodyPart}`);
@@ -110,6 +111,21 @@ class Backend {
             throw error;
         }
     }
+
+    static async getExerciseByBodyPartAndEquipment(bodyPart, equipment) {
+        try {
+            const workouts = await this.getExerciseByBodyPart(bodyPart);
+        if (equipment) {
+            const filteredWorkouts = workouts.filter(workout => workout.equipment === equipment);
+            return filteredWorkouts;
+        } else {
+            return workouts;
+            }
+        } catch (error) {
+            console.error("Error fetching exercises by body part and equipment", error);
+            throw error;
+        }
+    } 
 }
 
 Backend.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
