@@ -5,11 +5,11 @@ import UserContext from "../auth/UserContext";
 import AddWorkoutToPlaylist from "./AddWorkoutToPlaylist";
 
 function WorkoutSearch() {
+    const { currentUser } = useContext(UserContext);
     const [bodyPart, setBodyPart] = useState("");
     const [searchResults, setSearchResults] = useState([]);
     const [selectedEquipment, setSelectedEquipment] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
-    const { currentUser } = useContext(UserContext);
 
     const [showAddToPlaylist, setShowAddToPlaylist] = useState(false);
     const [selectedWorkout, setSelectedWorkout] = useState(null);

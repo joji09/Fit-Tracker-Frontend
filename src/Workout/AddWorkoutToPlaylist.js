@@ -1,13 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Modal } from "react-bootstrap";
+import UserContext from "../auth/UserContext";
 import Backend from "../api";
 
 function AddWorkoutToPlaylist({ show, onHide, workout, userPlaylists }) {
     const [selectedPlaylist, setSelectedPlaylist] = useState("");
+    const { currentUser } = useContext(UserContext);
 
     const handleConfirmAddToPlaylist = async () => {
         try {
-            await Backend.addExerciseToPlaylist(selectedPlaylist, workout.id);
+            const workoutId = workout.id
+            const userId = await Backend.getUserId(currentUser.username);
+            console.log(workout);
+            console.log(workoutId);
+            console.log(userId);
+            console.log(selectedPlaylist);
+            await Backend.addExerciseToPlaylist(userId, workoutId, selectedPlaylist);
             // TODO: Add message or update UI
             onHide();
         } catch (error) {
