@@ -18,7 +18,6 @@ function PlaylistList({ playlists }){
                     console.log(currentUser.username);
                     const userId = await Backend.getUserId(currentUser.username);
                     const userPlaylists = await Backend.getUserPlaylist(userId);
-                    console.log(userPlaylists);
                     setPlaylists(userPlaylists);
                     setLoading(false); 
                 }

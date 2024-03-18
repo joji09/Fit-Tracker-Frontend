@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./WorkoutCard.css";
 import AddWorkoutToPlaylist from "./AddWorkoutToPlaylist";
 
-function WorkoutCard({ workout }){
+function WorkoutCard({ workout, userPlaylists }){
     const [showModel, setShowModel] = useState(false);
 
     const handleAddToPlaylist = () => {
@@ -18,7 +18,7 @@ function WorkoutCard({ workout }){
                 <p className="card-text">Equipment: {workout.equipment}</p>
                 <button onClick={handleAddToPlaylist}>Add To Playlist</button>
                 {showModel && (
-                    <AddWorkoutToPlaylist show={showModel} onHide={() => setShowModel(false)} workout={workout} />
+                    <AddWorkoutToPlaylist userPlaylists={userPlaylists} show={showModel} onHide={() => setShowModel(false)} workout={workout} />
                 )}
             </div>
         </div>

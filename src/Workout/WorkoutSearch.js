@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Backend from "../api";
 import WorkoutCard from "./WorkoutCard";
+import UserContext from "../auth/UserContext";
 import AddWorkoutToPlaylist from "./AddWorkoutToPlaylist";
 
 function WorkoutSearch() {
@@ -8,22 +9,24 @@ function WorkoutSearch() {
     const [searchResults, setSearchResults] = useState([]);
     const [selectedEquipment, setSelectedEquipment] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+    const { currentUser } = useContext(UserContext);
 
     const [showAddToPlaylist, setShowAddToPlaylist] = useState(false);
     const [selectedWorkout, setSelectedWorkout] = useState(null);
     const [userPlaylists, setUserPlaylists] = useState([]);
 
-    // useEffect(() => {
-    //     const fetchUserPlaylists = async () => {
-    //       try {
-    //         const playlists = await Backend.getUserPlaylist();
-    //         setUserPlaylists(playlists);
-    //         } catch (error) {
-    //             console.error("Error fetching user's playlist", error);
-    //         }
-    //     };
-    //     fetchUserPlaylists();
-    // }, []);
+    useEffect(() => {
+        const fetchUserPlaylists = async () => {
+          try {
+            const userId = await Backend.getUserId(currentUser.username);
+            const playlists = await Backend.getUserPlaylist(userId);
+            setUserPlaylists(playlists);
+            } catch (error) {
+                console.error("Error fetching user's playlist", error);
+            }
+        };
+        fetchUserPlaylists();
+    }, []);
 
     // const handleAddToPlaylist = (workout) => {
     //     console.log("button clicked");
@@ -104,7 +107,7 @@ function WorkoutSearch() {
                 <div className="workout-card-container">
                     {searchResults.map((workout) => (
                         <div key={workout.id}>
-                        <WorkoutCard key={workout.id} workout={workout} />
+                        <WorkoutCard key={workout.id} workout={workout} userPlaylists={userPlaylists} />
                         </div>
                     ))}
                 </div>
