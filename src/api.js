@@ -69,8 +69,19 @@ class Backend {
 
     // Playlist routes
 
-    static async addExerciseToPlaylist(data) {
+    // static async addExerciseToPlaylist(data) {
+    //     // adds exercises to playlist
+    //     console.log(data);
+    //     let res = await this.request(`playlist/playlist/add`, data, "post");
+    //     return res.mappingId;
+    // }
+
+    static async addExerciseToPlaylist(userId, workoutId, workoutName, workoutBodyPart, playlistId) {
         // adds exercises to playlist
+        const exerciseId = workoutId;
+        const bodyPart = workoutBodyPart;
+        const data = { userId, exerciseId, workoutName, bodyPart, playlistId };
+        console.log(data);
         let res = await this.request(`playlist/playlist/add`, data, "post");
         return res.mappingId;
     }
