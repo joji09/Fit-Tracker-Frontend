@@ -12,9 +12,24 @@ function AddWorkoutToPlaylist({ show, onHide, workout, userPlaylists }) {
             const workoutId = workout.id
             const workoutName = workout.name;
             const workoutBodyPart = workout.bodyPart;
+            console.log(userPlaylists);
             const userId = await Backend.getUserId(currentUser.username);
+
+            // check if playlist is selected
+            if(!selectedPlaylist){
+                console.error("No playlist selected");
+            }
+
+            const selectedPlaylistObject = userPlaylists.find(playlist => playlist.playlistid = selectedPlaylist);
+
+            const playlistId = selectedPlaylist;
+            console.log(playlistId);
+            const playlistName = selectedPlaylistObject.playlistname;
+            console.log(playlistName);
+
             console.log(selectedPlaylist);
-            await Backend.addExerciseToPlaylist(userId, workoutId, workoutName, workoutBodyPart, selectedPlaylist);
+            // TODO: get PlaylistName to pass to API
+            await Backend.addExerciseToPlaylist(userId, workoutId, workoutName, workoutBodyPart, playlistId, playlistName);
             // TODO: Add message or update UI
             onHide();
         } catch (error) {

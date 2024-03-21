@@ -76,13 +76,15 @@ class Backend {
     //     return res.mappingId;
     // }
 
-    static async addExerciseToPlaylist(userId, workoutId, workoutName, workoutBodyPart, playlistId) {
+    static async addExerciseToPlaylist(userId, workoutId, workoutName, workoutBodyPart, playlistId, playlistName) {
         // adds exercises to playlist
+        // TODO: get playlistName to pass to Backend
         const exerciseId = workoutId;
         const bodyPart = workoutBodyPart;
-        const data = { userId, exerciseId, workoutName, bodyPart, playlistId };
+        const data = { userId, exerciseId, workoutName, bodyPart, playlistId, playlistName };
         console.log(data);
         let res = await this.request(`playlist/playlist/add`, data, "post");
+        console.log("exercise added to targeted playlist");
         return res.mappingId;
     }
 
