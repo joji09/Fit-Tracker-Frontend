@@ -10,6 +10,7 @@ import PlaylistForm from "../Playlist/PlaylistForm";
 import Profile from "../Profile/Profile";
 import ProfileForm from "../Profile/ProfileForm";
 import WorkoutSearch from "../Workout/WorkoutSearch";
+import PlaylistDetailsPage from "../Playlist/PlaylistDetailsPage";
 
 function Routes({ login, signup }){
 
@@ -25,6 +26,7 @@ function Routes({ login, signup }){
                 <PrivateRoute exact path="/profile/edit"><ProfileForm /></PrivateRoute>
                 <PrivateRoute exact path="/playlists"><PlaylistPage /></PrivateRoute>
                 <PrivateRoute exact path="/create-playlist"><PlaylistForm /></PrivateRoute>
+                <PrivateRoute exact path="/playlist/:playlistId"><PlaylistDetailsPage /></PrivateRoute>
                 <Redirect to="/" />
             </Switch>
         </div>

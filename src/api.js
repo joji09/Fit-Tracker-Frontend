@@ -69,13 +69,6 @@ class Backend {
 
     // Playlist routes
 
-    // static async addExerciseToPlaylist(data) {
-    //     // adds exercises to playlist
-    //     console.log(data);
-    //     let res = await this.request(`playlist/playlist/add`, data, "post");
-    //     return res.mappingId;
-    // }
-
     static async addExerciseToPlaylist(userId, workoutId, workoutName, workoutBodyPart, playlistId, playlistName) {
         // adds exercises to playlist
         const exerciseId = workoutId;
@@ -92,15 +85,35 @@ class Backend {
         return res.userPlaylist;
     }
 
-    static async removeExerciseFromPlaylist(mappingId){
+    static async getPlaylistDetails(playlistId) {
+        try {
+            console.log(playlistId);
+            const res = await this.request(`playlist/workouts/${playlistId}`);
+            return res.getPlaylistDetails
+        } catch (error) {
+            console.error("Error fetching playlist details - frontend", error);
+            throw error;
+        }
+    }
+
+    static async getPlaylistWorkouts(playlistId) {
+            console.log(`Running getPlaylistWorkouts: ${playlistId}`);
+            
+            const response = await this.request(`playlist/workouts/${playlistId}`);
+            return response.data.getPlaylistWorkouts;
+    }
+
+
+    static async removeExerciseFromPlaylist(mappingId) {
         // removes an exercise from a playlist
         await this.request(`playlist/playlist/remove/${mappingId}`, {}, "delete");
     }
 
-    static async createPlaylist(data){
+    static async createPlaylist(userId, playlistName, days){
         // creates a new playlist
+        const data = { userId, playlistName, days }
+        console.log(`playlist data passing from frontend as data: ${data}`);
         await this.request('playlist/playlist/create', data, "post");
-        console.log(data);
         console.log("playlist created");
     }
 

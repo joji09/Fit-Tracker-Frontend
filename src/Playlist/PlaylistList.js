@@ -32,14 +32,16 @@ function PlaylistList({ playlists }){
     return (
         <div className="container">
             <h2 className="text-center">Your Playlist</h2>
-            <div className="row">
+            <div className="row row-cols-1 row-cols-md-3 g-4">
                 {loading ? (
                     <p>Loading...</p>
                 ) : playlist.length === 0 ? (
                     <p>No playlists created</p>
                 ) : (
                     playlist.map((playlist) => (
+                        <div className="col" key={playlist.playlistid}>
                         <PlaylistCard key={playlist.playlistid} playlist={playlist} />
+                        </div>
                     ))
                 )}
             </div>

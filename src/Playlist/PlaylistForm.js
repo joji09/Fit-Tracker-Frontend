@@ -31,8 +31,6 @@ function PlaylistForm({ onSubmit }){
         e.preventDefault();
        try {
         // fetch userID
-        console.log({ currentUser });
-        console.log(currentUser.username);
         const userId = await Backend.getUserId(currentUser.username);
         console.log(userId);
         
@@ -40,15 +38,17 @@ function PlaylistForm({ onSubmit }){
             console.error("User ID not found");
             return;
         }
+        console.log(`Selected Days: ${selectedDays}`);
 
         const playlistData = {
             userId: userId,
             playlistName,
             days: selectedDays
         };
+
         console.log(playlistData);
 
-        await Backend.createPlaylist(playlistData);
+        await Backend.createPlaylist(playlistData.userId, playlistData.playlistName, playlistData.days);
 
         // Reset Fields
         setPlaylistName("");

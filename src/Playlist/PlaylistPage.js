@@ -20,31 +20,11 @@ function PlaylistPage() {
         setSelectedExercises([...selectedExercises, exercises]);
     };
 
-    // const handleCreatePlaylist = async () => {
-    //     // Create the playlist on the backend
-    //     try {
-    //         const playlistData = {
-    //             userId: "userId",
-    //             playlistName: playlistName,
-    //             exercises: selectedExercises,
-    //             days: selectedDays
-    //         };
-    //         await Backend.createPlaylist(playlistData);
-
-    //         // Resets state after successful creation
-    //         setSelectedExercises([]);
-    //         setSelectedDays([]);
-    //         setPlaylistName("");
-    //     } catch (error) {
-    //         console.error("Error creating playing", error);
-    //     }
-    // }
-
     return (
-        <div className="text-center">
+        <div className=" container text-center">
             <h1>Manage Your Playlist</h1>
 
-            <div className="d-flex justify-content-center">
+            <div className="card-deck">
                 <div className="card text-center m-3">
                     <Link to="/create-playlist" className="card text-center">
                         <h2>Create Playlist</h2>
