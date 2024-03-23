@@ -78,11 +78,9 @@ class Backend {
 
     static async addExerciseToPlaylist(userId, workoutId, workoutName, workoutBodyPart, playlistId, playlistName) {
         // adds exercises to playlist
-        // TODO: get playlistName to pass to Backend
         const exerciseId = workoutId;
         const bodyPart = workoutBodyPart;
         const data = { userId, exerciseId, workoutName, bodyPart, playlistId, playlistName };
-        console.log(data);
         let res = await this.request(`playlist/playlist/add`, data, "post");
         console.log("exercise added to targeted playlist");
         return res.mappingId;
@@ -138,7 +136,15 @@ class Backend {
             console.error("Error fetching exercises by body part and equipment", error);
             throw error;
         }
-    } 
+    }
+    
+    static async getExerciseById(workoutId){
+        let res = await this.request(`workout/exercise/${workoutId}`);
+        console.log(res);
+    } return (error) {
+        console.error("Error fetching exercise", error);
+        throw error;
+    }
 }
 
 Backend.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
