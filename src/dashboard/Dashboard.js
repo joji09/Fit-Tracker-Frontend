@@ -28,16 +28,6 @@ function Dashboard(){
         <div className="container text-center">
             <h1 className="mt-5">Welcome back {currentUser.firstName || currentUser.username}!</h1>
 
-            <div className="row justify-content-center mt-5">
-                <div className="col-md-4 mb-4"></div>
-                <Link to="/track-progress" className="card text-cent">
-                    <div className="card-body">
-                    <h2>Track Progress</h2>
-                    <p className="card-text">View your progress over time</p>
-                    </div>
-                </Link>
-            </div>
-
                 <div className="col-md-4 mb-4">
                 <Link to="/playlists" className="card text-center">
                     <div className="card-body">

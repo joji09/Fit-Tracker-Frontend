@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import "./styles/LoginForm.css";
 
 function LoginForm({ login }){
     const history = useHistory();
@@ -14,7 +15,7 @@ function LoginForm({ login }){
         evt.preventDefault();
         let result = await login(formData);
         if(result.success){
-            history.push("/dashboard");
+            history.push("/");
         } else {
             setFormError(result.err);
             // add alert
@@ -29,10 +30,9 @@ function LoginForm({ login }){
     return (
         <div className="LoginForm">
             <div className="container">
-
             <form onSubmit={handleSubmit}>
-
                 <div>
+                    <h2>Login</h2>
                     <label>Username</label>
                     <input name="username" value={formData.username} onChange={handleChange} required />
                 </div>

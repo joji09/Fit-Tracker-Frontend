@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import PlaylistDetails from "./PlaylistDetails";
-import "./PlaylistCard.css"
+import "./styles/PlaylistCard.css";
 
 function PlaylistCard({ playlist }){
     const [showDetails, setShowDetails] = useState(false);
     
     const debugButton = () => {
         console.log("Playlist Id:", playlist.playlistid);
-        const playlistIdx = playlist.playlistid;
     }
 
     return(

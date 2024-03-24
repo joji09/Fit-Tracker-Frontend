@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import "./WorkoutCard.css";
+import "./styles/WorkoutCard.css";
 import AddWorkoutToPlaylist from "./AddWorkoutToPlaylist";
 import WorkoutDetails from "./WorkoutDetails";
+
 
 function WorkoutCard({ workout, userPlaylists }){
     const [showDetailsModel, setshowDetailsModel] = useState(false);

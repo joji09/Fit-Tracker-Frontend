@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import "./styles/SignUpForm.css";
 
 function SingupForm({ signup }){
     const history = useHistory();
@@ -16,8 +17,8 @@ function SingupForm({ signup }){
     async function handleSubmit(evt){
         evt.preventDefault();
         let result = await signup(formData);
-        if(result.sucess){
-            history.push("/dashboard");
+        if(result.success){
+            history.push("/");
         } else {
             setFormError(result.err);
             // add alert

@@ -74,6 +74,7 @@ class Backend {
         const exerciseId = workoutId;
         const bodyPart = workoutBodyPart;
         const data = { userId, exerciseId, workoutName, bodyPart, playlistId, playlistName };
+        console.log(data);
         let res = await this.request(`playlist/playlist/add`, data, "post");
         console.log("exercise added to targeted playlist");
         return res.mappingId;
@@ -87,9 +88,9 @@ class Backend {
 
     static async getPlaylistDetails(playlistId) {
         try {
-            console.log(playlistId);
-            const res = await this.request(`playlist/workouts/${playlistId}`);
-            return res.getPlaylistDetails
+            const res = await this.request(`playlist/playlist/${playlistId}`);
+            console.log(res.playlistDetails);
+            return res.playlistDetails;
         } catch (error) {
             console.error("Error fetching playlist details - frontend", error);
             throw error;
@@ -99,8 +100,9 @@ class Backend {
     static async getPlaylistWorkouts(playlistId) {
             console.log(`Running getPlaylistWorkouts: ${playlistId}`);
             
-            const response = await this.request(`playlist/workouts/${playlistId}`);
-            return response.data.getPlaylistWorkouts;
+            const response = await this.request(`playlist/playlist/workouts/${playlistId}`);
+            console.log(response.PlaylistWorkouts);
+            return response.PlaylistWorkouts;
     }
 
 
