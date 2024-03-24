@@ -2,36 +2,24 @@ import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import Backend from "../api";
 import UserContext from "../auth/UserContext";
+import "./syle/Profile.css";
 
 function Profile(){
-    // const [user, setUser] = useState(null);
-
-    // useEffect(() => {
-    //     const fetchUserData = async () => {
-    //         try {
-    //             const userData = await Backend.getCurrentUser();
-    //             setUser(userData);
-    //         } catch (error) {
-    //             console.error("Error fetching user data", error);
-    //         }
-    //     };
-    //     fetchUserData();
-    // }, []);
 
     const { currentUser, setCurrentuser } = useContext(UserContext);
 
     return(
-        <div>
-            <h2>Profile</h2>
+        <div className="profile-container">
+            <h2 className="profile-title">Profile</h2>
             {currentUser ? (
-                <div>
+                <div className="profile-details">
                     <p>Username: {currentUser.username}</p>
                     <p>First Name: {currentUser.firstName}</p>
                     <p>Last Name: {currentUser.lastName}</p>
                     <p>Email: {currentUser.email}</p>
 
                     <Link to="/profile/edit">
-                        <button>Change Profile</button>
+                        <button className="change-profile-btn">Change Profile</button>
                     </Link>
                 </div>
             ) : (

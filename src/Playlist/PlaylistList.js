@@ -10,14 +10,16 @@ function PlaylistList({ playlists }){
     const [playlist, setPlaylists] = useState([]);
     const [loading, setLoading] = useState(true);
 
+
     useEffect(() => {
         const fetchUserPlaylists = async () => {
 
             try {
                 if(currentUser){
-                    console.log(currentUser.username);
                     const userId = await Backend.getUserId(currentUser.username);
+                    // console.log(userId);
                     const userPlaylists = await Backend.getUserPlaylist(userId);
+                    // console.log(userPlaylists);
                     setPlaylists(userPlaylists);
                     setLoading(false); 
                 }
@@ -28,6 +30,16 @@ function PlaylistList({ playlists }){
         };
         fetchUserPlaylists();
     }, [currentUser]);
+
+    const handleDelete = async (deletedPlaylistId) => {
+        try {
+            await Backend.removePlaylist(deletedPlaylistId);
+            const updatedPlaylists = playlist.filter(playlist => playlist.playlistid !== deletedPlaylistId);
+            setPlaylists(updatedPlaylists);
+        } catch (error) {
+            console.error("Error deleting playlist", error);
+        }
+    };
 
     return (
         <div className="container">
@@ -40,7 +52,7 @@ function PlaylistList({ playlists }){
                 ) : (
                     playlist.map((playlist) => (
                         <div className="col" key={playlist.playlistid}>
-                        <PlaylistCard key={playlist.playlistid} playlist={playlist} />
+                        <PlaylistCard key={playlist.playlistid} playlist={playlist} onDelete={handleDelete} />
                         </div>
                     ))
                 )}

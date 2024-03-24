@@ -10,15 +10,15 @@ function NavBar({ logout }){
         return(
             <ul className="navbar-nav ml-auto">
 
-                <li className="nav-item mr-4">
+                <li className="nav-item">
                     <NavLink className="nav-link" to="/dashboard">Dashboard</NavLink>
                 </li>
 
-                <li className="nav-item mr-4">
+                <li className="nav-item">
                     <NavLink className="nav-link" to="/profile">Profile</NavLink>
                 </li>
 
-                <li className="nav-item mr-4">
+                <li className="nav-item">
                     <Link className="nav-link" to="/" onClick={logout}>Logout {currentUser.username }</Link>
                 </li>
                 

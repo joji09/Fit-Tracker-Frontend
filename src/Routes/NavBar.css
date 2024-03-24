@@ -10,6 +10,7 @@
 .navbar-nav {
     display: flex !important;
     align-items: center !important;
+    flex-wrap: wrap !important;
 }
 
 .navbar-nav .nav-item {

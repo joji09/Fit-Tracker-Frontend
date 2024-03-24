@@ -1,0 +1,54 @@
+.playlist-details-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.playlist-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.days-info {
+    font-size: 16px;
+    color: #666;
+}
+
+.workouts-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.workouts-item {
+    margin-bottom: 15px;
+}
+
+.workout-info {
+    display: flex;
+    align-items: center;
+}
+
+.workout-name {
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.workout-controls input {
+    width: 60px;
+    margin-right: 5px;
+}
+
+.workout-controls button {
+    background-color: #1db954;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.workout-controls button:hover {
+    background-color: #1ed760;
+}

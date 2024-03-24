@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import PlaylistDetails from "./PlaylistDetails";
 import "./styles/PlaylistCard.css";
+import Backend from "../api";
 
-function PlaylistCard({ playlist }){
+function PlaylistCard({ playlist, onDelete }){
     const [showDetails, setShowDetails] = useState(false);
+
+    const handleDeleteClick = () => {
+        onDelete(playlist.playlistid);
+    };
     
     const debugButton = () => {
         console.log("Playlist Id:", playlist.playlistid);
@@ -21,6 +25,7 @@ function PlaylistCard({ playlist }){
                 )}
 
                 <Link to={`/playlist/${playlist.playlistid}`} className="btn btn-primary" onClick={debugButton}>View Details</Link>
+                <button className="btn btn-danger" onClick={handleDeleteClick}>Delete Playlist</button>
             </div>
         </div>
     );

@@ -3,6 +3,8 @@ import Backend from "../api";
 import WorkoutCard from "./WorkoutCard";
 import UserContext from "../auth/UserContext";
 import AddWorkoutToPlaylist from "./AddWorkoutToPlaylist";
+import "./styles/WorkoutCard.css";
+
 
 function WorkoutSearch() {
     const { currentUser } = useContext(UserContext);
