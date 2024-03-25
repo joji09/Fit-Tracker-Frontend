@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./styles/WorkoutCard.css";
 import AddWorkoutToPlaylist from "./AddWorkoutToPlaylist";
-import WorkoutDetails from "./WorkoutDetails";
+import WorkoutDetailsCard from "./WorkoutDetailsCard";
 
 
 function WorkoutCard({ workout, userPlaylists }){
@@ -26,7 +26,8 @@ function WorkoutCard({ workout, userPlaylists }){
     }
 
     return (
-        <div className="card">
+        <div className="workout-card-container">
+        <div className="workout-card">
             <div onClick={handleShowDetails} style={{ cursor: "pointer" }}>
             <img src={workout.gifUrl} className="card-img-top" alt="{workout.name}" />
             <h5 className="card-title">{workout.name}</h5>
@@ -38,11 +39,13 @@ function WorkoutCard({ workout, userPlaylists }){
                 {showAddToPlaylist && (
                     <AddWorkoutToPlaylist userPlaylists={userPlaylists} show={showAddToPlaylist} onHide={handleCloseModal} workout={workout} />
                 )}
+
                 {showDetailsModel && (
-                    <WorkoutDetails workoutId={workout.id} onClose={handleCloseModal} />
+                    <WorkoutDetailsCard exerciseId={workout.id} workoutName={workout.name} show={showDetailsModel} onHide={handleCloseModal} />
                 )}
             </div>
         </div>
+    </div>
     );
 }
 

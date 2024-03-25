@@ -2,12 +2,14 @@ import React, { userState, useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
 import Backend from "../api";
 import PlaylistDetails from "./PlaylistDetails";
+import WorkoutSearch from "../Workout/WorkoutSearch";
 import "./styles/PlaylistDetailsPage.css";
 
 function PlaylistDetailsPage(){
     const [playlistDetails, setPlaylistDetails] = useState(null);
     const [playlistWorkouts, setPlaylistWorkouts] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [changes, setChanges] = useState(false);
     const { playlistId } = useParams();
 
 
@@ -33,19 +35,45 @@ function PlaylistDetailsPage(){
 
     const removeWorkout = async (playlistDetails, workout) => {
       try {
-        console.log("Removing workout:", workout);
-        //playlistid
-        // console.log(playlistDetails.playlistid);
-        // playlistworkoutid
-        // console.log(workout.playlistworkoutid);
-        // console.log(playlistWorkoutsData[0].playlistworkoutid);
+
         await Backend.removeWorkoutFromPlaylist(playlistDetails.playlistid, workout.playlistworkoutid);
-        setPlaylistWorkouts(prevWorkouts => prevWorkouts.filter(w => w.workoutId !== workout.playlistworkoutid));
-        console.log("Updated playlistWorkouts", playlistWorkouts);
+        console.log("Workout removed!");
+        setPlaylistWorkouts(prevWorkouts => prevWorkouts.filter(w => w.playlistworkoutid !== workout.playlistworkoutid));
+        console.log("Updated playlistWorkouts:", playlistWorkouts);
       } catch (error) {
         console.error("Error removing workout from playlist", error);
       }
     }
+
+    const handleInputChange = (index, field, value) => {
+      const updatedWorkouts = [...playlistWorkouts];
+      updatedWorkouts[index][field] = value;
+      setPlaylistWorkouts(updatedWorkouts);
+      setChanges(true);
+    }
+
+    // const handleSave = async (playlistDetails, workout, sets, reps, weight) => {
+    //   try {
+    //     console.log(workout.playlistworkoutid);
+    //     await Backend.UpdateWorkoutVal(playlistDetails.playlistid, workout.playlistworkoutid, sets, reps, weight);
+    //     setChanges(false);
+    //   } catch (error) {
+    //     console.error("Error saving changes", error);
+    //   }
+    // }
+
+    const handleSave = async () => {
+      try {
+        console.log(playlistWorkouts);
+          await Promise.all(playlistWorkouts.map(workout =>
+              Backend.UpdateWorkoutVal(playlistId, workout.playlistworkoutid, workout.sets, workout.reps, workout.weight)
+          ));
+          setChanges(false); // Reset changes made flag after saving
+          console.log("Workout values saved successfully");
+      } catch (error) {
+          console.error("Error saving workout values", error);
+      }
+  }
 
     if(loading){
         return <p>Loading playlist details...</p>
@@ -56,25 +84,36 @@ function PlaylistDetailsPage(){
     // }
 
     return (
-        <div className="playlist-details-container">
+      <div className="playlist-details-container">
       <h5 className="playlist-name">Playlist: {playlistDetails.playlistname}</h5>
       <p className="days-info">Days: {playlistDetails.dayofweek}</p>
       <h3 className="workouts-heading">Workouts</h3>
-      <ul className="workouts-list">
-        {playlistWorkouts.map(workout => (
-          <li key={workout.playlistWorkoutId} className="workout-item">
-            <div className="workout-info">
-              <span className="workout-name">{workout.workout_name}</span>
-              <div className="workout-controls">
-                <button onClick={() =>removeWorkout(playlistDetails, workout)}>Remove</button>
-                <input type="number" placeholder="Sets" />
-                <input type="number" placeholder="Reps" />
-                <input type="number" placeholder="Weight" />
-              </div>
-            </div>
-          </li>
-        ))}
-      </ul>
+      <table className="playlist-table">
+        <thead>
+          <tr>
+            <th>Workout Name</th>
+            <th>Sets</th>
+            <th>Reps</th>
+            <th>Weight</th>
+            <th>Action</th>
+            <th>Save</th>
+          </tr>
+        </thead>
+        <tbody>
+          {playlistWorkouts.map((workout, index) => (
+            <tr key={workout.playlistWorkoutId} className="workout-item">
+              <td>{workout.workout_name}</td>
+              <td><input type="number" placeholder="0" value={workout.sets || ""} onChange={(e) => handleInputChange(index, "sets", e.target.value)}/></td>
+              <td><input type="number" placeholder="0" value={workout.reps || ""} onChange={(e) => handleInputChange(index, "reps", e.target.value)}/></td>
+              <td><input type="number" placeholder="0" value={workout.weight || ""} onChange={(e) => handleInputChange(index, "weight", e.target.value)}/></td>
+              <td>
+                <button onClick={() => removeWorkout(playlistDetails, workout)}>Remove</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      {changes && <button onClick={handleSave}>Save</button>}
     </div>
   );
 }

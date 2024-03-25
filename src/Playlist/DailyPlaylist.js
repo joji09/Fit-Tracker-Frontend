@@ -2,13 +2,14 @@ import React, { useState, useEffect, useContext } from "react";
 import PlaylistCard from "./PlaylistCard";
 import UserContext from "../auth/UserContext";
 import Backend from "../api";
+import "./styles/DailyPlaylist.css";
 
 function DailyPlaylist() {
-    const [dailyPlaylist, setDailyPlaylist] = useState(null);
+    const [dailyPlaylists, setDailyPlaylists] = useState([]);
     const { currentUser } = useContext(UserContext);
 
     useEffect(() => {
-        const fetchDayPlaylist = async () => {
+        const fetchDayPlaylists = async () => {
             try {
                 // get current date
                 const currentDate = new Date();
@@ -22,22 +23,24 @@ function DailyPlaylist() {
 
                 // find playlist for current day
                 
-                const dayPlaylist = playlists.find(
-                    (playlist) => playlist.dayofweek === currentDayOfWeek
+                const dayPlaylists = playlists.filter(
+                    (playlist) => playlist.dayofweek.includes(currentDayOfWeek)
                 );
                 
-                setDailyPlaylist(dayPlaylist);
+                setDailyPlaylists(dayPlaylists);
             } catch (error) {
                 console.error("Error fetching daily playlist", error);
             }
         };
-        fetchDayPlaylist();
+        fetchDayPlaylists();
     }, [currentUser]);
 
     return (
-        <div>
-            {dailyPlaylist ? (
-                <PlaylistCard playlist={dailyPlaylist} />
+        <div className="container">
+            {dailyPlaylists.length > 0 ? (
+                dailyPlaylists.map((playlist, index) => (
+                    <PlaylistCard key={index} playlist={playlist} />
+                ))
             ) : (
                 <p>No Playlist assigned for today</p>
             )}

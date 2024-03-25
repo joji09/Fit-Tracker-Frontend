@@ -3,6 +3,7 @@ import Backend from "../api";
 import WorkoutCard from "./WorkoutCard";
 import UserContext from "../auth/UserContext";
 import AddWorkoutToPlaylist from "./AddWorkoutToPlaylist";
+import './styles/WorkoutSearch.css';
 import "./styles/WorkoutCard.css";
 
 
@@ -52,11 +53,11 @@ function WorkoutSearch() {
     };
 
     return (
-        <div>
+        <div className="workout-search-container">
             <h2>
                 Workout Search
             </h2>
-            <div>
+            <div className="search-form">
                 <label htmlFor="bodyPart">Select Body Part</label>
                 <select id="bodyPart" value={bodyPart} onChange={(e) => setBodyPart(e.target.value)}>
 
@@ -103,12 +104,12 @@ function WorkoutSearch() {
                 </select>
                 <button onClick={handleSearch}>Search</button>
             </div>
-            <div>
+            <div className="search-results">
                 <h3>Search Results</h3>
                 {errorMessage && <p>{errorMessage}</p>}
                 <div className="workout-card-container">
                     {searchResults.map((workout) => (
-                        <div key={workout.id}>
+                        <div className="workout-card-container" key={workout.id}>
                         <WorkoutCard key={workout.id} workout={workout} userPlaylists={userPlaylists} />
                         </div>
                     ))}

@@ -7,16 +7,19 @@
 .workout-card {
     width: 18rem;
     margin-bottom: 20px;
+    border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
 }
 
 .workout-card:hover {
     transform: scale(1.5);
+    transform: translateY(5px);
 }
 
 .workout-card img {
     height: 200px;
+    border-radius: 8px;
     object-fit: cover;
 }
 

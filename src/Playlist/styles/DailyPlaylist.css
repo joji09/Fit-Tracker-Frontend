@@ -1,0 +1,5 @@
+.container {
+    max-width: 800px;
+    display: grid;
+    grid-gap: 10px;
+}

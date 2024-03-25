@@ -81,6 +81,7 @@ class Backend {
     static async getUserPlaylist(userId) {
         // fetches the user's playlist
         let res = await this.request(`playlist/playlist`, { userId });
+        console.log(res);
         return res.userPlaylist;
     }
 
@@ -124,6 +125,17 @@ class Backend {
         console.log("playlist deleted")
     }
 
+    static async UpdateWorkoutVal(playlistId, playlistWorkoutId, sets, reps, weight) {
+        // updates Sets, Reps and Weight from specific WorkoutId in User's Playlist
+        try {
+            const data = { sets, reps, weight }
+            await this.request(`playlist/playlist/workouts/${playlistId}/${playlistWorkoutId}`, data, "patch");
+            console.log("Workout values updated");
+        } catch (error) {
+            console.error("Error updating workout values", error);
+        }
+    }
+
     // Workout API Routes
 
 
@@ -154,7 +166,7 @@ class Backend {
     
     static async getExerciseById(workoutId){
         let res = await this.request(`workout/exercise/${workoutId}`);
-        console.log(res);
+        return res;
     } return (error) {
         console.error("Error fetching exercise", error);
         throw error;

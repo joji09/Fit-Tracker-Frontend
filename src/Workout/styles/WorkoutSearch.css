@@ -1,0 +1,33 @@
+.workout-search-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.search-form select {
+    max-width: 200px;
+}
+
+.search-form button {
+    max-width: 150px;
+}
+
+.search-form label {
+    font-weight: bold;
+}
+
+.search-form select,
+.search-form button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    padding: 8px;
+    font-size: 14px;
+}

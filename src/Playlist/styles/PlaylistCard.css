@@ -25,6 +25,7 @@
 
 .playlist-card a.btn {
     color: ffffff;
+    margin-top: 10px;
     background-color: #007bff;
     border-color: #007bff;
 }

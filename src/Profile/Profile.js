@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import Backend from "../api";
 import UserContext from "../auth/UserContext";
-import "./syle/Profile.css";
+import "./style/Profile.css";
 
 function Profile(){
 
