@@ -53,7 +53,7 @@ function PlaylistForm({ onSubmit }){
         // Reset Fields
         setPlaylistName("");
         setSelectedDays([]);
-        history.push("/playlist");
+        history.push("/playlists");
 
        } catch (error) {
         console.error("Error creating playlist", error);

@@ -81,7 +81,6 @@ class Backend {
     static async getUserPlaylist(userId) {
         // fetches the user's playlist
         let res = await this.request(`playlist/playlist`, { userId });
-        console.log(res);
         return res.userPlaylist;
     }
 

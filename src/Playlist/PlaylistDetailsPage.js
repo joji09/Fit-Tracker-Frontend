@@ -22,7 +22,6 @@ function PlaylistDetailsPage(){
                 setPlaylistDetails(playlistData);
                 console.log(`requesting playlistWorkoutData for: ${playlistId}`);
                 const playlistWorkoutsData = await Backend.getPlaylistWorkouts(playlistId)
-                console.log(`PlaylistWorkoutData: ${playlistWorkoutsData[0].playlistworkoutid}`);
                 setPlaylistWorkouts(playlistWorkoutsData);
                 setLoading(false);
             } catch (error) {
@@ -75,6 +74,16 @@ function PlaylistDetailsPage(){
       }
   }
 
+//   const handleDelete = async (deletedPlaylistId) => {
+//     try {
+//         await Backend.removePlaylist(deletedPlaylistId);
+//         const updatedPlaylists = playlist.filter(playlist => playlist.playlistid !== deletedPlaylistId);
+//         setPlaylists(updatedPlaylists);
+//     } catch (error) {
+//         console.error("Error deleting playlist", error);
+//     }
+// };
+
     if(loading){
         return <p>Loading playlist details...</p>
     }
@@ -96,7 +105,6 @@ function PlaylistDetailsPage(){
             <th>Reps</th>
             <th>Weight</th>
             <th>Action</th>
-            <th>Save</th>
           </tr>
         </thead>
         <tbody>

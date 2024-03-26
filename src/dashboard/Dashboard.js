@@ -4,6 +4,7 @@ import UserContext from "../auth/UserContext";
 import Backend from "../api";
 import WorkoutSearch from "../Workout/WorkoutSearch";
 import DailyPlaylist from "../Playlist/DailyPlaylist";
+import "./Dashboard.css";
 
 function Dashboard(){
     const { currentUser } = useContext(UserContext);
@@ -26,16 +27,16 @@ function Dashboard(){
     // }, []);
     
     return(
-        <div className="container text-center">
+        // <div className="container text-center">
+        <div className="dashboard-container">
+            <div className="dashboard-heading">
             <h1 className="mt-5">Welcome back {currentUser.firstName || currentUser.username}!</h1>
-
-            <div>
-            <h2 className="mt-5">Today's Playlist</h2>
-            <DailyPlaylist />
             </div>
-
-                <div className="col-md-4 mb-4">
-                <Link to="/playlists" className="card text-center">
+            <div className="dashboard-card-container">
+                {/* <div className="col-md-4 mb-4"> */}
+                <div className="dashboard-card">
+                {/* <Link to="/playlists" className="card text-center"> */}
+                <Link to="/playlists" className="dashboard-link">
                     <div className="card-body">
                     <h2>Manage Playlist</h2>
                     <p className="card-text">Manage your playlists!</p>
@@ -43,13 +44,21 @@ function Dashboard(){
                 </Link>
             </div>
 
-            <div className="col-md-4 mb-4">
-                <Link to="/workout-search" className="card text-center">
+            {/* <div className="col-md-4 mb-4"> */}
+            <div className="dashboard-card">
+                {/* <Link to="/workout-search" className="card text-center"> */}
+                <Link to="/workout-search" className="dashboard-link">
                     <div className="card-body">
                     <h2>Find Workouts</h2>
                     <p className="card-text">Plan your workouts!</p>
                     </div>
                 </Link>
+            </div>
+            </div>
+
+            <div>
+            <h2 className="today-title">Today's Playlist</h2>
+            <DailyPlaylist />
             </div>
 
             <WorkoutSearch userPlaylists={userPlaylists} />
