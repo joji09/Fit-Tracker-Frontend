@@ -30,7 +30,7 @@ function Dashboard(){
         // <div className="container text-center">
         <div className="dashboard-container">
             <div className="dashboard-heading">
-            <h1 className="mt-5">Welcome back {currentUser.firstName || currentUser.username}!</h1>
+            <h2 className="mt-5">Welcome back {currentUser.firstName || currentUser.username}!</h2>
             </div>
             <div className="dashboard-card-container">
                 {/* <div className="col-md-4 mb-4"> */}
@@ -38,7 +38,7 @@ function Dashboard(){
                 {/* <Link to="/playlists" className="card text-center"> */}
                 <Link to="/playlists" className="dashboard-link">
                     <div className="card-body">
-                    <h2>Manage Playlist</h2>
+                    <h5>Manage Playlist</h5>
                     <p className="card-text">Manage your playlists!</p>
                     </div>
                 </Link>
@@ -49,14 +49,24 @@ function Dashboard(){
                 {/* <Link to="/workout-search" className="card text-center"> */}
                 <Link to="/workout-search" className="dashboard-link">
                     <div className="card-body">
-                    <h2>Find Workouts</h2>
+                    <h5>Find Workouts</h5>
+                    <p className="card-text">Plan your workouts!</p>
+                    </div>
+                </Link>
+            </div>
+
+            <div className="dashboard-card">
+                {/* <Link to="/workout-search" className="card text-center"> */}
+                <Link to="/profile" className="dashboard-link">
+                    <div className="card-body">
+                    <h5>Profile</h5>
                     <p className="card-text">Plan your workouts!</p>
                     </div>
                 </Link>
             </div>
             </div>
 
-            <div>
+            <div className="dailyplaylist-container">
             <h2 className="today-title">Today's Playlist</h2>
             <DailyPlaylist />
             </div>

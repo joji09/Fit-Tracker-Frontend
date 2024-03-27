@@ -40,8 +40,8 @@ function NavBar({ logout }){
     }
 
     return(
-        <nav className="navbar">
-            <Link to="/" className="nav-link">
+        <nav className="navbar navbar-expand-lg">
+            <Link to="/" className="navbar-brand">
                 Fit-Tracker
             </Link>
             {currentUser ? loggedInNav() : loggedOutNav() }
