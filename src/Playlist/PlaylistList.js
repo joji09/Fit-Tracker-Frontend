@@ -42,7 +42,7 @@ function PlaylistList({ playlists }){
     };
 
     return (
-        <div className="container">
+        <>
             <h2 className="text-center">Your Playlist</h2>
             <div className="row row-cols-1 row-cols-md-3 g-4">
                 {loading ? (
@@ -57,7 +57,7 @@ function PlaylistList({ playlists }){
                     ))
                 )}
             </div>
-        </div>
+        </>
     );
 }
 

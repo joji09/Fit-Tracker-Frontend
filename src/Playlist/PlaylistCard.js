@@ -15,7 +15,8 @@ function PlaylistCard({ playlist, onDelete }){
     }
 
     return(
-        <div className="playlist-card card m-4">
+        // <div className="playlist-card card m-4">
+        <div className="playlist-card card">
             <div className="card-body">
                 <div className="card-info">
                 <h5 className="card-title">{playlist.playlistname}</h5>
@@ -30,7 +31,7 @@ function PlaylistCard({ playlist, onDelete }){
 
                 {/* <Link to={`/playlist/${playlist.playlistid}`} className="btn btn-primary" onClick={debugButton}>View Details</Link>
                 <button className="btn btn-danger" onClick={handleDeleteClick}>Delete Playlist</button> */}
-
+                
                 <Link to={`/playlist/${playlist.playlistid}`} className="card-link" onClick={debugButton}>View Details</Link>
                 <button className="card-button" onClick={handleDeleteClick}>Delete Playlist</button>
             </div>

@@ -25,6 +25,16 @@ function WorkoutCard({ workout, userPlaylists }){
         setshowAddToPlaylist(false);
     }
 
+    const cardStyle = {
+        backgroundColor: "#222831",
+        color: "#eeeeee",
+    };
+
+    const buttonStyle = {
+        backgroundColor: "#76ABAE",
+    };
+
+
     return (
         <div className="workout-card-container">
         <div className="workout-card">
@@ -35,7 +45,7 @@ function WorkoutCard({ workout, userPlaylists }){
             <div className="card-body" >
                 <p className="card-text">Body Part: {workout.bodyPart}</p>
                 <p className="card-text">Equipment: {workout.equipment}</p>
-                <button onClick={handleShowAddToPlaylist}>Add To Playlist</button>
+                <button className="add-to-playlist-btn" onClick={handleShowAddToPlaylist}>Add To Playlist</button>
                 {showAddToPlaylist && (
                     <AddWorkoutToPlaylist userPlaylists={userPlaylists} show={showAddToPlaylist} onHide={handleCloseModal} workout={workout} />
                 )}

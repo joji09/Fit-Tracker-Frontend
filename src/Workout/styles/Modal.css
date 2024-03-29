@@ -1,0 +1,50 @@
+Modal {
+    border-radius: 10px;
+}
+
+Modal.Header {
+    background-color: #76ABAE;
+    color: #fff;
+    border-bottom: none;
+}
+
+Modal.Title {
+    font-size: 1.5rem;
+}
+
+Modal.Body {
+    padding: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    margin-bottom: 15px;
+}
+
+Modal.Footer {
+    border-top: none;
+}
+
+button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:first-child {
+    background-color: #76ABAE;
+    color: #fff;
+    margin-right: 10px;
+}
+
+button:last-child {
+    background-color: #A64C37;
+    color: #fff;
+}

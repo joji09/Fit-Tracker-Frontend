@@ -60,7 +60,7 @@ function Dashboard(){
                 <Link to="/profile" className="dashboard-link">
                     <div className="card-body">
                     <h5>Profile</h5>
-                    <p className="card-text">Plan your workouts!</p>
+                    <p className="card-text">Edit your profile</p>
                     </div>
                 </Link>
             </div>

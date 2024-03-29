@@ -5,7 +5,7 @@
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
-    height: 100%
+    height: 100%;
 }
 
 .playlist-card:hover {
@@ -24,26 +24,52 @@
     color: #2B313D;
 }
 
-/* .playlist-card a.btn {
-    color: ffffff;
-    margin-top: 10px;
-    background-color: #007bff;
-    border-color: #007bff;
+.card-days {
+    margin-bottom: 20px;
 }
 
-.playlist-card a.btn:hover {
-    color: ffffff;
-    background-color: #0056b3;
-    border-color: #0056b3;
+/* .card-button {
+    color: #2B313D;
+    margin-top: 10px;
+    background-color: #A64C37 !important;
+    transition: transform 0.3s ease;
 } */
 
-.card-link {
+.card-button {
+    background-color: #A64C37;
+    border: none;
+}
+
+.card-button:hover {
+    background-color: #55261c !important;
+}
+
+.card-link,
+.card-button {
     margin: 10px 10px;
     text-decoration: none;
     border-radius: 5px;
     padding: 10px 20px;
     color: #F1F4F1;
-    background-color: #A64C37;
+    transition: transform 0.3s ease;
+}
+
+/* .card-link {
+    margin: 10px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    color: #F1F4F1;
+    background-color: #76ABAE;
+    transition: transform 0.3s ease;
+} */
+
+.card-link {
+    background-color: #76ABAE;
+}
+
+.card-link:hover {
+    background-color: #477679;
 }
 
 @media (max-width: 768px) {

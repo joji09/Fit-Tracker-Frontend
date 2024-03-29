@@ -28,7 +28,7 @@ function PlaylistPage() {
                 <div className="card text-center m-3">
                     <Link to="/create-playlist" className="card text-center">
                         <h2>Create Playlist</h2>
-                        <p>Plan your workouts splits!</p>
+                        <p>+</p>
                     </Link>
                 </div>
 

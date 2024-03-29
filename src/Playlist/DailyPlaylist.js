@@ -36,15 +36,19 @@ function DailyPlaylist() {
     }, [currentUser]);
 
     return (
-        <div className="container">
+        <>
+        <div className="row row-cols-1 row-cols-md-2 g-4 justify-content-center">
             {dailyPlaylists.length > 0 ? (
                 dailyPlaylists.map((playlist, index) => (
-                    <PlaylistCard key={index} playlist={playlist} />
+                    <div key={index} className="col m-b3">
+                    <PlaylistCard playlist={playlist} />
+                    </div>
                 ))
             ) : (
                 <p>No Playlist assigned for today</p>
             )}
-        </div>
+            </div>
+        </>
     );
 }
 

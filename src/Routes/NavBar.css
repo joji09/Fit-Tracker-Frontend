@@ -47,13 +47,13 @@
 
 .navbar-nav li:last-child {
     border-radius: 10px;
-    color: #F1F4F1;
+    color: #F1F4F1 !important;
     background-color: #A64C37;
     transition: color 0.3s ease !important;
 }
 
 .navbar-nav li:last-child:hover {
     border-radius: 10px;
-    color: #2B313D;
-    background-color: #F1F4F1;
+    color: #F1F4F1 !important;
+    background-color: #351711;
 }

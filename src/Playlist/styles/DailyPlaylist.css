@@ -1,5 +1,12 @@
-.container {
-    max-width: 800px;
-    display: grid;
-    grid-gap: 5px;
-}
+.row-cols-1 > * {
+    flex: 1 0 100%;
+    max-width: 100%;
+  }
+  
+  @media (min-width: 768px) {
+    .row-cols-md-3 > * {
+      flex: 1 0 0;
+      max-width: 33.333333%;
+    }
+  }
+  

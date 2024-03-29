@@ -1,22 +1,18 @@
 .workout-search-container {
     max-width: 800px;
-    margin: 0 auto;
+    margin: 10px auto;
     padding: 20px;
+    padding-top: 20px;
 }
 
 .search-form {
     display: flex;
     flex-direction: row;
     gap: 10px;
+    justify-content: center;
+    align-items: center;
 }
 
-.search-form select {
-    max-width: 200px;
-}
-
-.search-form button {
-    max-width: 150px;
-}
 
 .search-form label {
     font-weight: bold;
@@ -24,10 +20,17 @@
 
 .search-form select,
 .search-form button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 500px;
+    flex: 1;
     padding: 8px;
     font-size: 14px;
 }
+
+.search-results {
+    margin-top: 20px
+}
+
+/* .workout-card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 20px;
+} */

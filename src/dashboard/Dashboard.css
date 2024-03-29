@@ -1,6 +1,6 @@
 .dashboard-container {
-    background-color: #8B9296;
-    color: #fffffe;
+    background-color: #EEEEEE;
+    color: #222831;
     padding: 20px;
     position: relative;
   }
@@ -14,7 +14,7 @@
   }
   
   .dashboard-card {
-    background-color: #2B313D;
+    background-color: #222831;
     border-radius: 10px;
     padding: 20px;
     text-align: center;
@@ -24,25 +24,25 @@
   }
   
   .dashboard-card:hover {
-    background-color: #F7DA32;
+    background-color: #31363F;
     transform: translateY(-5px);
   }
 
   .dashboard-card h2:hover {
-    color: #8B9296;
+    color: #222831;
   }
 
   .dashboard-card p:hover {
-    color: #8B9296;
+    color: #76ABAE;
   }
   
   .dashboard-card h2 {
-    color: #fffffe;
+    color: #EEEEEE;
     margin-bottom: 10px;
   }
   
   .dashboard-card p {
-    color: #94a1b2;
+    color: #EEEEEE;
     margin-bottom: 0;
   }
   
@@ -52,7 +52,7 @@
   }
   
   .dashboard-heading {
-    color: #F1F4F1;
+    color: #222831;
     margin-top: 10px;
     margin-bottom: 20px;
     text-align: center;

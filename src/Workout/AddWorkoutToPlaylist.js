@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { Modal } from "react-bootstrap";
 import UserContext from "../auth/UserContext";
 import Backend from "../api";
+import "./styles/Modal.css";
 
 function AddWorkoutToPlaylist({ show, onHide, workout, userPlaylists }) {
     const [selectedPlaylist, setSelectedPlaylist] = useState("");
