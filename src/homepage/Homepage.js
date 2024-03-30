@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../auth/UserContext";
+import "../images/homepage.png"
 import "./Homepage.css";
 
 function Homepage(){
@@ -12,10 +13,9 @@ function Homepage(){
             <div className="info">
             <h1>Plan your workout split!</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus odit nihil ullam nesciunt quidem iste, Repellendus odit nihi</p>
-            </div>
             <div className="homepage-links">
             {currentUser ?
-            <h2>Welcome back, {currentUser.firstName || currentUser.username}!</h2>
+            <Link to="/dashboard" className="homepage-link">Dashboard</Link>
             : (
                 <p>
                     <Link to="/login" className="homepage-link">Login</Link>
@@ -23,8 +23,9 @@ function Homepage(){
                 </p>
             )}
             </div>
+            </div>
             <div className="image">
-                <img src="https://v2.exercisedb.io/image/9IYIbADzSzVXiQ" alt="Workout"></img>
+                <img src="../images/homepage.png" alt="Workout"></img>
             </div>
             </div>
         </div>

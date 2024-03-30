@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import Backend from "../api";
 import UserContext from "../auth/UserContext";
+import "./style/ProfileForm.css";
 
 function ProfileForm(){
     const { currentUser, setCurrentUser } = useContext(UserContext);

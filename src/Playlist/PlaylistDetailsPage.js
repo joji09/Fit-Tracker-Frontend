@@ -10,6 +10,7 @@ function PlaylistDetailsPage(){
     const [playlistWorkouts, setPlaylistWorkouts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [changes, setChanges] = useState(false);
+    const [userPlaylists, setUserPlaylists] = useState([]);
     const { playlistId } = useParams();
 
 
@@ -113,7 +114,12 @@ function PlaylistDetailsPage(){
               <td>{workout.workout_name}</td>
               <td><input type="number" placeholder="0" value={workout.sets || ""} onChange={(e) => handleInputChange(index, "sets", e.target.value)}/></td>
               <td><input type="number" placeholder="0" value={workout.reps || ""} onChange={(e) => handleInputChange(index, "reps", e.target.value)}/></td>
-              <td><input type="number" placeholder="0" value={workout.weight || ""} onChange={(e) => handleInputChange(index, "weight", e.target.value)}/></td>
+              <td>
+                <div className="weight-input-container">
+                <input type="number" placeholder="0" value={workout.weight || ""} onChange={(e) => handleInputChange(index, "weight", e.target.value)}/>
+                <span className="unit">lbs</span>
+                </div>
+                </td>
               <td>
                 <button onClick={() => removeWorkout(playlistDetails, workout)}>Remove</button>
               </td>
@@ -122,6 +128,11 @@ function PlaylistDetailsPage(){
         </tbody>
       </table>
       {changes && <button onClick={handleSave}>Save</button>}
+
+      <div className="workoutsearch-container">
+        <h2>Add Workouts!</h2>
+      <WorkoutSearch userPlaylists={userPlaylists}/>
+      </div>
     </div>
   );
 }

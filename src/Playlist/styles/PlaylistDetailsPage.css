@@ -1,46 +1,108 @@
 /* PlaylistDetailsPage.css */
 
 .playlist-details-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .playlist-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .playlist-table th,
-  .playlist-table td {
-    padding: 8px;
-    border-bottom: 1px solid #dddddd;
-  }
-  
-  .playlist-table th {
-    text-align: left;
-    background-color: #f2f2f2;
-  }
-  
-  .playlist-table tr:hover {
-    background-color: #e6e6e6;
-  }
-  
-  .workout-controls input {
-    width: 60px;
-    margin-right: 5px;
-  }
-  
-  .workout-controls button {
-    background-color: #dc3545;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .workout-controls button:hover {
-    background-color: #c82333;
-  }
-  
+  margin: 20px;
+}
+
+.playlist-name {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.days-info {
+  margin-bottom: 15px;
+}
+
+.workouts-heading {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.playlist-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.playlist-table th,
+.playlist-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.playlist-table th {
+  background-color: #76ABAE;
+}
+
+.workout-item:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.workout-item:hover {
+  background-color: #e6e6e6;
+}
+
+.workout-item td:last-child {
+  text-align: center;
+}
+
+.workout-item button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.workout-item button:hover {
+  background-color: #c82333;
+}
+
+.save-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.save-button:hover {
+  background-color: #0056b3;
+}
+
+
+.workout-item input[type="number"] {
+  width: calc(100% - 20px); /* Adjust the width as needed */
+  padding: 5px 10px;
+  border: none;
+  background-color: transparent;
+}
+
+.workout-item input[type="number"]:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.weight-input-container {
+  position: relative;
+}
+
+.weight-input-container input[type="number"] {
+  width: calc(100% - 30px); /* Adjust the width as needed */
+}
+
+.unit {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+}
+
+.workoutsearch-container {
+  margin-top: 20px;
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+}
