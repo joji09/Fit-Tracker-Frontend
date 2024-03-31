@@ -9,7 +9,9 @@ const WorkoutDetailsCard = ({ exerciseId, workoutName, onHide, show }) => {
     // fetch workout details from backend
     const fetchWorkoutDetails = async () => {
         try {
+          console.log(`ExerciseId passed: ${exerciseId}`);
             const details = await Backend.getExerciseById(exerciseId);
+            console.log(details);
             setWorkoutDetails(details);
         } catch (error) {
             console.error('Error fetching workout details', error);

@@ -40,6 +40,7 @@ function WorkoutSearch() {
     const handleSearch = async () => {
         try {
             const exercises = await Backend.getExerciseByBodyPartAndEquipment(bodyPart, selectedEquipment);
+            console.log(exercises);
             if(exercises.length === 0) {
                 setErrorMessage("No workouts found using that equipment");
             } else {

@@ -31,6 +31,7 @@ function AddWorkoutToPlaylist({ show, onHide, workout, userPlaylists }) {
             console.log(selectedPlaylist);
             // TODO: get PlaylistName to pass to API
             await Backend.addExerciseToPlaylist(userId, workoutId, workoutName, workoutBodyPart, playlistId, playlistName);
+            console.log(`Workout: ${workoutId}, ${workoutName} has been added`);
             // TODO: Add message or update UI
             onHide();
         } catch (error) {

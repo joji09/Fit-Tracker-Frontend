@@ -6,6 +6,7 @@ import "./style/ProfileForm.css";
 function ProfileForm(){
     const { currentUser, setCurrentUser } = useContext(UserContext);
     const [formData, setFormData] = useState({
+        username: currentUser.username,
         firstName: currentUser.firstName,
         lastName: currentUser.lastName,
         email: currentUser.email
@@ -23,6 +24,7 @@ function ProfileForm(){
         e.preventDefault();
 
         let profileData = {
+            username: formData.username,
             firstName: formData.firstName,
             lastName: formData.lastName,
             email: formData.email,

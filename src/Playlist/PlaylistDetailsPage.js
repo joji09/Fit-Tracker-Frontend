@@ -4,6 +4,7 @@ import Backend from "../api";
 import PlaylistDetails from "./PlaylistDetails";
 import WorkoutSearch from "../Workout/WorkoutSearch";
 import "./styles/PlaylistDetailsPage.css";
+import WorkoutDetailsCard from "../Workout/WorkoutDetailsCard";
 
 function PlaylistDetailsPage(){
     const [playlistDetails, setPlaylistDetails] = useState(null);
@@ -11,17 +12,16 @@ function PlaylistDetailsPage(){
     const [loading, setLoading] = useState(true);
     const [changes, setChanges] = useState(false);
     const [userPlaylists, setUserPlaylists] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+    const [selectedWorkoutId, setSelectedWorkoutId] = useState(null);
     const { playlistId } = useParams();
 
 
     useEffect(() => {
         const fetchPlaylistData = async () => {
             try {
-                console.log(`requesting playlistDetails Data for: ${playlistId}`);
                 const playlistData = await Backend.getPlaylistDetails(playlistId);
-                console.log(playlistData);
                 setPlaylistDetails(playlistData);
-                console.log(`requesting playlistWorkoutData for: ${playlistId}`);
                 const playlistWorkoutsData = await Backend.getPlaylistWorkouts(playlistId)
                 setPlaylistWorkouts(playlistWorkoutsData);
                 setLoading(false);
@@ -52,16 +52,6 @@ function PlaylistDetailsPage(){
       setChanges(true);
     }
 
-    // const handleSave = async (playlistDetails, workout, sets, reps, weight) => {
-    //   try {
-    //     console.log(workout.playlistworkoutid);
-    //     await Backend.UpdateWorkoutVal(playlistDetails.playlistid, workout.playlistworkoutid, sets, reps, weight);
-    //     setChanges(false);
-    //   } catch (error) {
-    //     console.error("Error saving changes", error);
-    //   }
-    // }
-
     const handleSave = async () => {
       try {
         console.log(playlistWorkouts);
@@ -75,23 +65,23 @@ function PlaylistDetailsPage(){
       }
   }
 
-//   const handleDelete = async (deletedPlaylistId) => {
-//     try {
-//         await Backend.removePlaylist(deletedPlaylistId);
-//         const updatedPlaylists = playlist.filter(playlist => playlist.playlistid !== deletedPlaylistId);
-//         setPlaylists(updatedPlaylists);
-//     } catch (error) {
-//         console.error("Error deleting playlist", error);
-//     }
-// };
+  const handleWorkoutClick =  async (workout) => {
+    console.log("button has been clicked");
+    console.log(workout.workoutid);
+
+    try {
+      const selectedWorkout = workout.workoutid;
+      const exercise = await Backend.getExerciseByWorkoutId(selectedWorkout);
+      console.log(exercise.exerciseId);
+      setSelectedWorkoutId(exercise.exerciseId);
+    } catch (error){
+      console.error("Error fetching exercise details", error);
+    }
+  };
 
     if(loading){
         return <p>Loading playlist details...</p>
     }
-
-    // if(!playlistDetails) {
-    //     return <p>Error: Playlist details not found.</p>
-    // }
 
     return (
       <div className="playlist-details-container">
@@ -110,8 +100,9 @@ function PlaylistDetailsPage(){
         </thead>
         <tbody>
           {playlistWorkouts.map((workout, index) => (
-            <tr key={workout.playlistWorkoutId} className="workout-item">
-              <td>{workout.workout_name}</td>
+            <tr key={workout.playlistworkoutid} className="workout-item">
+              <td><span onClick={() => handleWorkoutClick(workout)}>{workout.workout_name}</span>
+              </td>
               <td><input type="number" placeholder="0" value={workout.sets || ""} onChange={(e) => handleInputChange(index, "sets", e.target.value)}/></td>
               <td><input type="number" placeholder="0" value={workout.reps || ""} onChange={(e) => handleInputChange(index, "reps", e.target.value)}/></td>
               <td>
@@ -127,12 +118,14 @@ function PlaylistDetailsPage(){
           ))}
         </tbody>
       </table>
+      {selectedWorkoutId && (
+        <WorkoutDetailsCard
+        exerciseId={selectedWorkoutId}
+        workoutName={playlistWorkouts.find(workout => workout.exerciseId === selectedWorkoutId)?.workout_name}
+        onHide={() => setSelectedWorkoutId(null)}
+        show={selectedWorkoutId !== null} />
+      )}
       {changes && <button onClick={handleSave}>Save</button>}
-
-      <div className="workoutsearch-container">
-        <h2>Add Workouts!</h2>
-      <WorkoutSearch userPlaylists={userPlaylists}/>
-      </div>
     </div>
   );
 }

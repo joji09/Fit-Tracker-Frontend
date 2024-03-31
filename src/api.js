@@ -31,6 +31,7 @@ class Backend {
 
     static async updateUserProfile(data){
         try {
+            console.log(data);
             const res = await this.request(`users/update`, data, 'patch');
             return res.user;
         } catch (error) {
@@ -162,8 +163,14 @@ class Backend {
             throw error;
         }
     }
+
+    static async getExerciseByWorkoutId(workoutId) {
+        let res = await this.request(`workout/exercise/find/${workoutId}`);
+        return res;
+    }
     
     static async getExerciseById(workoutId){
+        console.log(workoutId);
         let res = await this.request(`workout/exercise/${workoutId}`);
         return res;
     } return (error) {
