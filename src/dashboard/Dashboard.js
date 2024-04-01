@@ -25,15 +25,6 @@ function Dashboard(){
             </div>
 
             <div className="dashboard-card">
-                <Link to="/workout-search" className="dashboard-link">
-                    <div className="card-body">
-                    <h5>Find Workouts</h5>
-                    <p className="card-text">Plan your workouts!</p>
-                    </div>
-                </Link>
-            </div>
-
-            <div className="dashboard-card">
                 <Link to="/profile" className="dashboard-link">
                     <div className="card-body">
                     <h5>Profile</h5>
