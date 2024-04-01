@@ -25,7 +25,7 @@ function Homepage(){
             </div>
             </div>
             <div className="image">
-                <img src="https://v2.exercisedb.io/image/wXqlsc9kIGx5ne" alt="Workout"></img>
+                <img src="https://static.vecteezy.com/system/resources/thumbnails/011/299/705/small/strength-exercise-weight-lifting-barbell-3d-icon-illustration-png.png" alt="Workout"></img>
             </div>
             </div>
         </div>
