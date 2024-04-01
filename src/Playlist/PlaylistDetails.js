@@ -9,7 +9,6 @@ function PlaylistDetails({ playlistId }) {
         const fetchPlaylistDetails = async () => {
             try {
                 const playlistData = await Backend.getPlaylistDetails(playlistId);
-                console.log(`Playlist data: ${playlistData}`);
                 setPlaylistDetails(playlistData);
                 setLoading(false);
             } catch (error) {

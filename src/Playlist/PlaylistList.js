@@ -5,7 +5,6 @@ import Backend from "../api";
 import UserContext from "../auth/UserContext";
 
 function PlaylistList({ playlists }){
-    // const [userPlaylists, setUserPlaylists] = useState([]);
     const { currentUser } = useContext(UserContext);
     const [playlist, setPlaylists] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -17,9 +16,7 @@ function PlaylistList({ playlists }){
             try {
                 if(currentUser){
                     const userId = await Backend.getUserId(currentUser.username);
-                    // console.log(userId);
                     const userPlaylists = await Backend.getUserPlaylist(userId);
-                    // console.log(userPlaylists);
                     setPlaylists(userPlaylists);
                     setLoading(false); 
                 }

@@ -44,13 +44,11 @@ function PlaylistForm({ onSubmit }){
        try {
         // fetch userID
         const userId = await Backend.getUserId(currentUser.username);
-        console.log(userId);
         
         if(!userId){
             console.error("User ID not found");
             return;
         }
-        console.log(`Selected Days: ${selectedDays}`);
 
         const playlistData = {
             userId: userId,

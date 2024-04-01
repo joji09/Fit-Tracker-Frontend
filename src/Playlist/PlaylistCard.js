@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./styles/PlaylistCard.css";
-import Backend from "../api";
 
 function PlaylistCard({ playlist, onDelete }){
     const [showDetails, setShowDetails] = useState(false);
@@ -15,7 +14,6 @@ function PlaylistCard({ playlist, onDelete }){
     }
 
     return(
-        // <div className="playlist-card card m-4">
         <div className="playlist-card card">
             <div className="card-body">
                 <div className="card-info">
@@ -28,9 +26,6 @@ function PlaylistCard({ playlist, onDelete }){
                 )}
                 </div>
                 </div>
-
-                {/* <Link to={`/playlist/${playlist.playlistid}`} className="btn btn-primary" onClick={debugButton}>View Details</Link>
-                <button className="btn btn-danger" onClick={handleDeleteClick}>Delete Playlist</button> */}
                 
                 <Link to={`/playlist/${playlist.playlistid}`} className="card-link" onClick={debugButton}>View Details</Link>
                 <button className="card-button" onClick={handleDeleteClick}>Delete Playlist</button>

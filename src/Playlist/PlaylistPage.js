@@ -1,16 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import PlaylistForm from "./PlaylistForm";
-import ExercisesSelection from "./ExercisesSelection";
-import DaySelection from "./DaySelection";
 import PlaylistList from "./PlaylistList";
 import Backend from "../api";
 import "./styles/PlaylistPage.css";
 
 function PlaylistPage() {
     // Brings together all playlist components and handles submission and state.
-    
-    const [exercises, setExercises] = useState([]);
     const [selectedExercises, setSelectedExercises] = useState([]);
     const [playlists, setPlaylists] = useState([
         {id: 1, name: "Playlist 1", days: ["Monday", "Wednesday", "Friday"] },

@@ -1,25 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../auth/UserContext";
-import Backend from "../api";
 import WorkoutSearch from "../Workout/WorkoutSearch";
 import DailyPlaylist from "../Playlist/DailyPlaylist";
 import "./Dashboard.css";
 
 function Dashboard(){
     const { currentUser } = useContext(UserContext);
-    const [dayWorkouts, setDayWorkouts] = useState([]);
     const [userPlaylists, setUserPlaylists] = useState([]);
     
     return(
-        // <div className="container text-center">
         <div className="dashboard-container">
             <div className="dashboard-heading">
             <h2 className="mt-5">Welcome back {currentUser.firstName || currentUser.username}!</h2>
             </div>
             <div className="dashboard-card-container">
                 <div className="dashboard-card">
-                {/* <Link to="/playlists" className="card text-center"> */}
                 <Link to="/playlists" className="dashboard-link">
                     <div className="card-body">
                     <h5>Manage Playlist</h5>
@@ -38,7 +34,6 @@ function Dashboard(){
             </div>
 
             <div className="dashboard-card">
-                {/* <Link to="/workout-search" className="card text-center"> */}
                 <Link to="/profile" className="dashboard-link">
                     <div className="card-body">
                     <h5>Profile</h5>

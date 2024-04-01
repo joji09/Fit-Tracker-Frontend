@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./styles/LoginForm.css";
 
+// Handles the login functionality
 function LoginForm({ login }){
     const history = useHistory();
     const [formData, setFormData] = useState({
@@ -11,10 +12,12 @@ function LoginForm({ login }){
 
     const [formError, setFormError] = useState([]);
 
+    // Handles when user submits their username and password.
     async function handleSubmit(evt){
         evt.preventDefault();
         let result = await login(formData);
         if(result.success){
+            // Sends user to the Homepage.
             history.push("/");
         } else {
             setFormError(result.err);

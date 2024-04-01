@@ -14,10 +14,12 @@ function SingupForm({ signup }){
 
     const [formError, setFormError] = useState([]);
 
+    // handles when user's submit their information.
     async function handleSubmit(evt){
         evt.preventDefault();
         let result = await signup(formData);
         if(result.success){
+            // Sends user to the Homepage.
             history.push("/");
         } else {
             setFormError(result.err);

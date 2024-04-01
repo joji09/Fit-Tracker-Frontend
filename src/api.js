@@ -24,11 +24,13 @@ class Backend {
 
     // user Routes
 
+    // Fetches currentuser information by their username
     static async getCurrentUser(username){
         let res = await this.request(`users/${username}`);
         return res.user;
     }
 
+    // Updates user's information
     static async updateUserProfile(data){
         try {
             console.log(data);
@@ -42,11 +44,13 @@ class Backend {
 
     // auth routes
 
+    // Handles login functionality
     static async login(data){
         let res = await this.request(`auth/token`, data, "post");
         return res.token;
     }
 
+    // Handles login functionality
     static async signup(data){
         let res = await this.request(`auth/register`, data, "post");
         return res.token;
@@ -55,11 +59,8 @@ class Backend {
     // User routes
 
     static async getUserId(username) {
-        // console.log(`requesting username: ${username}`);
         try {
             const res = await this.request(`users/userId/${username}`);
-            // console.log(res);
-            // console.log(res.user);
             return res.user;
         } catch (error) {
             console.error("Error fetching userId", error);
@@ -69,8 +70,8 @@ class Backend {
 
     // Playlist routes
 
+    // Adds exercises to playlist
     static async addExerciseToPlaylist(userId, workoutId, workoutName, workoutBodyPart, playlistId, playlistName) {
-        // adds exercises to playlist
         const exerciseId = workoutId;
         const bodyPart = workoutBodyPart;
         const data = { userId, exerciseId, workoutName, bodyPart, playlistId, playlistName };
@@ -79,12 +80,13 @@ class Backend {
         return res.mappingId;
     }
 
+    // Fetches the user's playlist.
     static async getUserPlaylist(userId) {
-        // fetches the user's playlist
         let res = await this.request(`playlist/playlist`, { userId });
         return res.userPlaylist;
     }
 
+    // Fetches user's playlist details.
     static async getPlaylistDetails(playlistId) {
         try {
             const res = await this.request(`playlist/playlist/${playlistId}`);
@@ -95,38 +97,35 @@ class Backend {
         }
     }
 
+    // Fetches Playlist's workouts.
     static async getPlaylistWorkouts(playlistId) {
             console.log(`Running getPlaylistWorkouts: ${playlistId}`);
-            
             const response = await this.request(`playlist/playlist/workouts/${playlistId}`);
             return response.PlaylistWorkouts;
     }
 
 
+    // Removes Workout from user's Playlist.
     static async removeWorkoutFromPlaylist(playlistId, playlistWorkoutId) {
         // removes an exercise from a playlist
-        console.log(`FRONTEND ROUTE FUNCTION - playlistId: ${playlistId}`);
-        console.log(`FRONTEND ROUTE FUNCTION - playlistworkoutId: ${playlistWorkoutId}`);
         await this.request(`playlist/playlist/workouts/${playlistId}/${playlistWorkoutId}`, {}, "delete");
     }
 
+    // Creates Playlist under an userId.
     static async createPlaylist(userId, playlistName, days){
-        // creates a new playlist
         const data = { userId, playlistName, days }
-        console.log(`playlist data passing from frontend as data: ${data}`);
         await this.request('playlist/playlist/create', data, "post");
         console.log("playlist created");
     }
 
+    // Deletes the user's playlist
     static async removePlaylist(playlistId) {
-        // remove playlist
-        console.log(playlistId);
         await this.request(`playlist/playlist/remove/${playlistId}`, {}, "delete");
         console.log("playlist deleted")
     }
 
+     // Updates Sets, Reps and Weight from specific WorkoutId in User's Playlist
     static async UpdateWorkoutVal(playlistId, playlistWorkoutId, sets, reps, weight) {
-        // updates Sets, Reps and Weight from specific WorkoutId in User's Playlist
         try {
             const data = { sets, reps, weight }
             await this.request(`playlist/playlist/workouts/${playlistId}/${playlistWorkoutId}`, data, "patch");

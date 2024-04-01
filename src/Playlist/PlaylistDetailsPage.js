@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Backend from "../api";
 import PlaylistDetails from "./PlaylistDetails";
-import WorkoutSearch from "../Workout/WorkoutSearch";
 import "./styles/PlaylistDetailsPage.css";
 import WorkoutDetailsCard from "../Workout/WorkoutDetailsCard";
 
@@ -40,7 +39,6 @@ function PlaylistDetailsPage(){
         await Backend.removeWorkoutFromPlaylist(playlistDetails.playlistid, workout.playlistworkoutid);
         console.log("Workout removed!");
         setPlaylistWorkouts(prevWorkouts => prevWorkouts.filter(w => w.playlistworkoutid !== workout.playlistworkoutid));
-        console.log("Updated playlistWorkouts:", playlistWorkouts);
       } catch (error) {
         console.error("Error removing workout from playlist", error);
       }
@@ -59,7 +57,7 @@ function PlaylistDetailsPage(){
           await Promise.all(playlistWorkouts.map(workout =>
               Backend.UpdateWorkoutVal(playlistId, workout.playlistworkoutid, workout.sets, workout.reps, workout.weight)
           ));
-          setChanges(false); // Reset changes made flag after saving
+          setChanges(false);
           console.log("Workout values saved successfully");
       } catch (error) {
           console.error("Error saving workout values", error);
@@ -67,13 +65,9 @@ function PlaylistDetailsPage(){
   }
 
   const handleWorkoutClick =  async (workout) => {
-    console.log("button has been clicked");
-    console.log(workout.workoutid);
-
     try {
       const selectedWorkout = workout.workoutid;
       const exercise = await Backend.getExerciseByWorkoutId(selectedWorkout);
-      console.log(exercise.exerciseId);
       setSelectedWorkoutId(exercise.exerciseId);
     } catch (error){
       console.error("Error fetching exercise details", error);

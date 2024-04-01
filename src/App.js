@@ -17,7 +17,6 @@ function App() {
   const [infoLoaded, setInfoLoaded] = useState(false);
   const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID);
   const [userId, setUserId] = useState();
-  // console.log(TOKEN_STORAGE_ID);
 
   useEffect(function loadUser() {
     async function getCurrentUser(){
