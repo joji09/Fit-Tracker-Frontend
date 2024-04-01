@@ -1,0 +1,20 @@
+.dashboard-card {
+    background-color: #222831;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .dashboard-card h2 {
+    color: #fff;
+  }
+
+  .dashboard-card:hover {
+    background-color: #31363F;
+    transform: translateY(-5px);
+  }
+
+  .dashboard-card h2:hover {
+    color: #fff;
+  }

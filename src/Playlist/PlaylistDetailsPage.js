@@ -1,5 +1,6 @@
 import React, { userState, useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Backend from "../api";
 import PlaylistDetails from "./PlaylistDetails";
 import WorkoutSearch from "../Workout/WorkoutSearch";
@@ -87,6 +88,9 @@ function PlaylistDetailsPage(){
       <div className="playlist-details-container">
       <h5 className="playlist-name">Playlist: {playlistDetails.playlistname}</h5>
       <p className="days-info">Days: {playlistDetails.dayofweek}</p>
+      <div>
+      <Link to="/workout-search" className="add-workout-button">Add workouts!</Link>
+      </div>
       <h3 className="workouts-heading">Workouts</h3>
       <table className="playlist-table">
         <thead>

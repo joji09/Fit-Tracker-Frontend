@@ -18,7 +18,7 @@ function LoginForm({ login }){
             history.push("/");
         } else {
             setFormError(result.err);
-            // add alert
+            alert("Username/password are incorrect, please try again");
         }
     }
 

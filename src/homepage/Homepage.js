@@ -25,7 +25,7 @@ function Homepage(){
             </div>
             </div>
             <div className="image">
-                <img src="../images/homepage.png" alt="Workout"></img>
+                <img src="https://v2.exercisedb.io/image/wXqlsc9kIGx5ne" alt="Workout"></img>
             </div>
             </div>
         </div>

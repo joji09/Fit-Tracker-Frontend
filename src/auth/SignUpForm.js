@@ -21,7 +21,7 @@ function SingupForm({ signup }){
             history.push("/");
         } else {
             setFormError(result.err);
-            // add alert
+            alert(result.err);
         }
     }
 

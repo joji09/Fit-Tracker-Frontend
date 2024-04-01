@@ -30,6 +30,17 @@ function PlaylistForm({ onSubmit }){
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        
+        if(!playlistName.trim()) {
+            alert("Please provide a playlist name.");
+            return;
+        }
+    
+        if(selectedDays.length === 0) {
+            alert("Please select at least one day for the playlist.");
+            return;
+        }
+
        try {
         // fetch userID
         const userId = await Backend.getUserId(currentUser.username);
@@ -47,7 +58,6 @@ function PlaylistForm({ onSubmit }){
             days: selectedDays
         };
 
-        console.log(playlistData);
 
         await Backend.createPlaylist(playlistData.userId, playlistData.playlistName, playlistData.days);
 

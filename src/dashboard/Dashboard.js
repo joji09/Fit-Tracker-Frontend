@@ -10,21 +10,6 @@ function Dashboard(){
     const { currentUser } = useContext(UserContext);
     const [dayWorkouts, setDayWorkouts] = useState([]);
     const [userPlaylists, setUserPlaylists] = useState([]);
-
-    // useEffect(() => {
-    //     const fetchUserPlaylists = async () => {
-    //         try {
-    //             const userId = await Backend.getUserId(currentUser.username);
-    //             console.log(userId);
-    //             const playlists = await Backend.getUserPlaylist(userId);
-    //             console.log(playlists);
-    //             setUserPlaylists(playlists);
-    //         } catch (error) {
-    //             console.error("Error fetching user's playlist", error);
-    //         }
-    //     };
-    //     fetchUserPlaylists();
-    // }, []);
     
     return(
         // <div className="container text-center">
@@ -33,7 +18,6 @@ function Dashboard(){
             <h2 className="mt-5">Welcome back {currentUser.firstName || currentUser.username}!</h2>
             </div>
             <div className="dashboard-card-container">
-                {/* <div className="col-md-4 mb-4"> */}
                 <div className="dashboard-card">
                 {/* <Link to="/playlists" className="card text-center"> */}
                 <Link to="/playlists" className="dashboard-link">
@@ -44,9 +28,7 @@ function Dashboard(){
                 </Link>
             </div>
 
-            {/* <div className="col-md-4 mb-4"> */}
             <div className="dashboard-card">
-                {/* <Link to="/workout-search" className="card text-center"> */}
                 <Link to="/workout-search" className="dashboard-link">
                     <div className="card-body">
                     <h5>Find Workouts</h5>
