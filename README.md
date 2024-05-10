@@ -2,10 +2,12 @@
 
 Fit-Tracker is a web app to organize workouts in a form of playlists and assign them days to easily organize user's workout's splits.
 
-You can find the live website here: [Fit-Tracker](https://fit-tracker-frontend.onrender.com).
+-[You can find the live website here: [Fit-Tracker](https://fit-tracker-frontend.onrender.com).]
+
+**Due to ElephantSQL ending service, the live website does not work properly at the moment.**
 
 ## Desired Functionalities
-- [x] Login/Singup/Authentication User Functionality.
+- [] Login/Singup/Authentication User Functionality.
 - [x] Allow users to create workout Playlists.
 - [x] Assign Workout Playlist to days.
 - [x] Let user know which workout playlist to do that given day.
