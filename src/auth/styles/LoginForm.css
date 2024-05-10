@@ -25,12 +25,14 @@
 }
 
 .container label {
+    color: black;
     margin-bottom: 8px;
     margin-right: 10px;
     font-weight: bold;
 }
 
 .container input {
+    color: black;
     padding: 10px;
     margin-bottom: 16px;
     border: 1px solid #ccc;
